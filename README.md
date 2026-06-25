@@ -41,7 +41,7 @@ Xebia_Hospitality_Pipeline/
 │ 
 │── Stage 5 - Proof-of-Concept Tool
 │   └── Xebia Hospitality POC Tool.html
-│   └── Xebia POC Tool Demo Video
+│   └── Xebia POC Tool Demo Video.mov
 │
 └── README.md
 ```
