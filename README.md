@@ -213,6 +213,8 @@ The tool allows a user to:
 
 ### How to run
 
+> **Note:** Clicking the file on GitHub displays the raw HTML source code, not the rendered tool. To use it, click the **download icon** (top right of the code view) to download the raw file, then open the downloaded file in your browser.
+
 1. Open `Xebia Hospitality POC Tool.html` in any modern browser
 2. Enter an OpenAI API key with access to `gpt-4o` in the top-right input field
 3. Paste a hospitality request email into the text box and click Run extraction
