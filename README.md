@@ -221,7 +221,7 @@ The tool allows a user to:
 | File | Description |
 |------|-------------|
 | `Xebia Hospitality POC Tool.html` | Interactive proof-of-concept demo. Lets the user run a live extraction demonstrating the pipeline built visually. |
-| `Xebia POC Tool Demo Video` | Recording of proof-of-concept demo. Included to cater to readers without access to OpenAI API key. |
+| `Xebia POC Tool Demo Video.mov` | Recording of proof-of-concept demo. Included to cater to readers without access to OpenAI API key. |
 
 
 ---
