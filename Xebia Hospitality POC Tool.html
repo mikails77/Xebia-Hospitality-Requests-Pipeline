@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xebia Hospitality Email Tool</title>
+
+  <!--
+    ============================================================
+    XEBIA HOSPITALITY EMAIL TOOL
+    BSc Business Analytics Thesis - University of Amsterdam
+    In collaboration with Xebia
+
+    DESCRIPTION:
+    Proof-of-concept artifact for an LLM-based information
+    extraction pipeline for hospitality request emails.
+
+    The tool allows Xebia back-office staff to:
+      1. Paste a hospitality request email
+      2. Automatically extract 12 structured fields via GPT-4o
+      3. Receive a draft follow-up reply for any missing fields
+      4. Browse historical extraction results from the experiment
+
+    TECHNICAL DESIGN:
+    - Single self-contained HTML file, no framework or server needed
+    - Calls the OpenAI API directly from the browser using fetch()
+    - Uses Prompt 3 (few-shot) + GPT-4o as the recommended
+      configuration based on evaluation results
+    - Historical experiment results are embedded as a JS array
+    - Temperature 0 for extraction (deterministic), 0.7 for reply
+
+    HOW TO USE:
+    1. Open this file in any modern browser
+    2. Enter your OpenAI API key in the top-right input
+    3. Paste a hospitality request email and click Run extraction
+    4. Switch to History tab to browse past experiment results
+    ============================================================
+  -->
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── RESET AND BASE ── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── CSS VARIABLES (theme colours) ── */
+    :root {
+      --purple:        #5B3FA8;
+      --purple-light:  #7B5CC4;
+      --purple-bg:     #F4F1FC;
+      --purple-border: #E2D9F3;
+      --white:         #FFFFFF;
+      --gray-50:       #F8F7FA;
+      --gray-100:      #F0EDF8;
+      --gray-400:      #9B8FBB;
+      --gray-600:      #6B5F8A;
+      --gray-900:      #1A1230;
+      --success:       #2D7D46;
+      --success-bg:    #EBF5EE;
+      --success-border:#B8DFC4;
+      --danger:        #C0392B;
+      --danger-bg:     #FDECEA;
+      --danger-border: #F5C0BB;
+      --warning:       #8B6914;
+      --warning-bg:    #FEF9EC;
+      --radius:        10px;
+      --radius-lg:     14px;
+      --shadow:        0 1px 3px rgba(91,63,168,0.08), 0 4px 16px rgba(91,63,168,0.06);
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+      min-height: 100vh;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* ── NAVIGATION ── */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--purple-border);
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      height: 58px;
+      gap: 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand  { display: flex; align-items: center; gap: 10px; }
+    .nav-logo   { width: 32px; height: 32px; background: var(--purple); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .nav-logo svg { width: 17px; height: 17px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .nav-title  { font-size: 15px; font-weight: 600; color: var(--gray-900); letter-spacing: -.01em; }
+    .nav-sep    { width: 1px; height: 24px; background: var(--purple-border); margin: 0 .25rem; }
+    .nav-links  { display: flex; gap: 2px; }
+    .nav-link   { padding: 6px 14px; border-radius: 8px; font-size: 13px; color: var(--gray-600); cursor: pointer; border: none; background: none; font-family: 'DM Sans', sans-serif; font-weight: 500; transition: all .15s; }
+    .nav-link:hover  { background: var(--purple-bg); color: var(--purple); }
+    .nav-link.active { background: var(--purple-bg); color: var(--purple); }
+    .nav-right  { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+    .api-input  { padding: 8px 12px; border: 1px solid var(--purple-border); border-radius: 8px; font-size: 12px; font-family: 'DM Sans', sans-serif; color: var(--gray-900); background: var(--gray-50); width: 230px; outline: none; transition: border .15s; }
+    .api-input:focus { border-color: var(--purple); background: var(--white); }
+    .api-input::placeholder { color: var(--gray-400); }
+    .poc-badge  { background: var(--purple-bg); color: var(--purple); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
+
+    /* ── MAIN LAYOUT ── */
+    main { max-width: 1080px; margin: 0 auto; padding: 2rem 2.5rem 3rem; }
+
+    /* ── ALERTS ── */
+    .alert { display: flex; align-items: flex-start; gap: 10px; padding: 11px 14px; border-radius: var(--radius); font-size: 13px; margin-bottom: 1.25rem; line-height: 1.5; }
+    .alert svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .alert-error { background: var(--danger-bg); color: var(--danger); border: 1px solid var(--danger-border); }
+    .alert-info  { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
+    .hidden { display: none !important; }
+
+    /* ── CARDS ── */
+    .card { background: var(--white); border: 1px solid var(--purple-border); border-radius: var(--radius-lg); padding: 1.5rem 1.75rem; box-shadow: var(--shadow); }
+    .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1.1rem; padding-bottom: .9rem; border-bottom: 1px solid var(--gray-100); }
+    .card-icon { width: 30px; height: 30px; background: var(--purple-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .card-icon svg { width: 15px; height: 15px; stroke: var(--purple); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .card-title { font-size: 13px; font-weight: 600; color: var(--gray-900); }
+    .card-desc  { font-size: 11px; color: var(--gray-400); margin-top: 1px; }
+
+    /* ── TEXTAREA ── */
+    .input-section { margin-bottom: 1.5rem; }
+    textarea { width: 100%; font-family: 'DM Sans', sans-serif; color: var(--gray-900); border: 1px solid var(--purple-border); border-radius: var(--radius); outline: none; transition: border .15s; background: var(--white); padding: 12px; font-size: 13px; line-height: 1.65; resize: vertical; min-height: 160px; }
+    textarea:focus { border-color: var(--purple); }
+    textarea::placeholder { color: var(--gray-400); }
+
+    /* ── BUTTONS ── */
+    .btn-primary { background: var(--purple); color: white; border: none; border-radius: var(--radius); padding: 11px 24px; font-size: 13px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background .15s; margin-top: 1rem; }
+    .btn-primary:hover:not(:disabled) { background: var(--purple-light); }
+    .btn-primary:disabled { opacity: .45; cursor: not-allowed; }
+    .btn-ghost { background: transparent; color: var(--gray-600); border: 1px solid var(--purple-border); border-radius: 8px; padding: 7px 13px; font-size: 12px; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all .15s; }
+    .btn-ghost:hover { background: var(--purple-bg); color: var(--purple); border-color: var(--purple); }
+    .btn-ghost svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ── SPINNER ── */
+    .spinner { width: 14px; height: 14px; border: 2px solid rgba(255,255,255,.35); border-top-color: white; border-radius: 50%; animation: spin .65s linear infinite; flex-shrink: 0; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── RESULTS TWO-COLUMN GRID ── */
+    .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: start; }
+
+    /* ── STATS ROW ── */
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 1.25rem; }
+    .stat-box { border-radius: var(--radius); padding: 10px 12px; text-align: center; border: 1px solid var(--purple-border); background: var(--gray-50); }
+    .stat-num   { font-size: 22px; font-weight: 600; line-height: 1; }
+    .stat-label { font-size: 10px; color: var(--gray-400); margin-top: 3px; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
+    .stat-primary .stat-num { color: var(--purple); }
+    .stat-success .stat-num { color: var(--success); }
+    .stat-danger  .stat-num { color: var(--danger);  }
+
+    /* ── FIELD CHIPS ──
+       Each extracted field shown as a small card with a
+       coloured left border indicating extraction status:
+       green = extracted, grey = missing, amber = to be confirmed */
+    .section-label { font-size: 11px; font-weight: 600; color: var(--gray-400); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 10px; }
+    .fields-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; }
+    .field-chip { background: var(--gray-50); border: 1px solid var(--purple-border); border-radius: 9px; padding: 9px 11px; position: relative; overflow: hidden; }
+    .field-chip::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
+    .field-chip.present::before   { background: var(--success); }
+    .field-chip.missing::before   { background: var(--purple-border); }
+    .field-chip.confirmed::before { background: var(--warning); }
+    .chip-label     { font-size: 10px; font-weight: 600; color: var(--gray-400); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 2px; }
+    .chip-value     { font-size: 12px; color: var(--gray-900); font-weight: 500; line-height: 1.4; word-break: break-word; }
+    .chip-null      { font-size: 12px; color: var(--gray-400); font-style: italic; }
+    .chip-confirmed { font-size: 12px; color: var(--warning); font-weight: 500; }
+
+    /* ── REPLY SECTION ── */
+    .reply-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .reply-text { background: var(--purple-bg); border: 1px solid var(--purple-border); border-radius: var(--radius); padding: 1rem 1.1rem; font-size: 13px; color: var(--gray-900); line-height: 1.75; white-space: pre-wrap; font-family: 'DM Sans', sans-serif; min-height: 200px; }
+    .all-good { background: var(--success-bg); border: 1px solid var(--success-border); border-radius: var(--radius); padding: 12px 16px; font-size: 13px; color: var(--success); font-weight: 500; display: flex; align-items: center; gap: 8px; }
+    .all-good svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.5; flex-shrink: 0; }
+
+    /* ── PLACEHOLDER (before first extraction) ── */
+    .placeholder { text-align: center; padding: 3rem 2rem; }
+    .placeholder-icon { width: 56px; height: 56px; background: var(--purple-bg); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; }
+    .placeholder-icon svg { width: 24px; height: 24px; stroke: var(--purple); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .placeholder h3 { font-size: 14px; font-weight: 600; color: var(--gray-900); margin-bottom: 6px; }
+    .placeholder p  { font-size: 13px; color: var(--gray-400); line-height: 1.65; max-width: 260px; margin: 0 auto; }
+
+    /* ── HISTORY PAGE ── */
+    .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1.5rem; }
+    .summary-card { background: var(--white); border: 1px solid var(--purple-border); border-radius: var(--radius-lg); padding: 1rem 1.25rem; box-shadow: var(--shadow); }
+    .summary-card .label { font-size: 11px; color: var(--gray-400); font-weight: 500; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; }
+    .summary-card .value { font-size: 20px; font-weight: 600; color: var(--gray-900); }
+    .summary-card .sub   { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
+    .history-controls { display: flex; gap: 10px; margin-bottom: 1.25rem; align-items: center; }
+    .history-controls select { width: auto; padding: 7px 32px 7px 10px; font-size: 12px; border: 1px solid var(--purple-border); border-radius: 8px; background: var(--white); color: var(--gray-900); outline: none; cursor: pointer; font-family: 'DM Sans', sans-serif; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239B8FBB' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 8px center; }
+    .history-controls select:focus { border-color: var(--purple); }
+    .history-count { font-size: 12px; color: var(--gray-400); margin-left: auto; }
+    .history-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--purple-border); }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    th { background: var(--gray-50); padding: 9px 12px; text-align: left; font-size: 11px; font-weight: 600; color: var(--gray-600); text-transform: uppercase; letter-spacing: .04em; border-bottom: 1px solid var(--purple-border); white-space: nowrap; }
+    td { padding: 9px 12px; border-bottom: 1px solid var(--gray-100); color: var(--gray-900); vertical-align: top; max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--purple-bg); }
+    .email-id { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 600; background: var(--purple-bg); color: var(--purple); }
+    .missing-count { display: inline-block; padding: 2px 7px; border-radius: 20px; font-size: 10px; font-weight: 600; }
+    .mc-0    { background: var(--success-bg); color: var(--success); }
+    .mc-low  { background: var(--warning-bg); color: var(--warning); }
+    .mc-high { background: var(--danger-bg);  color: var(--danger);  }
+
+    /* ── LIVE BADGE — marks newly extracted emails added this session ── */
+    .badge-live { display: inline-block; padding: 2px 7px; border-radius: 20px; font-size: 10px; font-weight: 600; background: var(--purple-bg); color: var(--purple); margin-left: 4px; }
+
+    /* ── FOOTER ── */
+    footer { text-align: center; padding: 1.75rem; font-size: 12px; color: var(--gray-400); border-top: 1px solid var(--purple-border); background: var(--white); margin-top: 3rem; }
+    footer span { color: var(--purple); font-weight: 500; }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION BAR
+     API key input (password type so key is hidden on screen).
+     Key is sent only to api.openai.com, never stored anywhere.
+============================================================ -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-title">Xebia Hospitality Email Tool</span>
+  </div>
+  <div class="nav-sep" style="width:1px;height:24px;background:var(--purple-border);margin:0 .25rem"></div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="showPage('extract', this)">Extract</button>
+    <button class="nav-link" onclick="showPage('history', this)">History</button>
+  </div>
+  <div class="nav-right">
+    <input type="password" class="api-input" id="apikey" placeholder="OpenAI API key  (sk-...)">
+    <span class="poc-badge">Proof of concept</span>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     EXTRACT PAGE
+     Main workflow:
+       1. User pastes email into textarea
+       2. runExtraction() calls GPT-4o with EXTRACTION_PROMPT
+       3. Extracted fields rendered as chips in left column
+       4. If fields missing, reply generated in right column
+============================================================ -->
+<main id="page-extract">
+
+  <div id="alert-error" class="alert alert-error hidden">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <span id="error-msg"></span>
+  </div>
+
+  <div id="alert-loading" class="alert alert-info hidden">
+    <div class="spinner" style="border-color:rgba(91,63,168,.25);border-top-color:var(--purple)"></div>
+    <span id="loading-msg">Processing...</span>
+  </div>
+
+  <!-- Email input card -->
+  <div class="input-section">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="card-title">Hospitality request email</div>
+          <div class="card-desc">Paste the incoming request email below</div>
+        </div>
+      </div>
+      <textarea id="email-input" placeholder="Hi team,&#10;&#10;I would like to book a meeting room for Thursday 19 June. We are expecting around 15 people including some guests from Salesforce. We will need lunch — preferably a normal buffet. Can you also set up a projector?&#10;&#10;Thanks"></textarea>
+      <button class="btn-primary" id="extract-btn" onclick="runExtraction()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Run extraction
+      </button>
+    </div>
+  </div>
+
+  <!-- Placeholder shown before any extraction has been run -->
+  <div id="placeholder-row" class="results-grid">
+    <div class="card">
+      <div class="placeholder">
+        <div class="placeholder-icon"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
+        <h3>Extracted fields</h3>
+        <p>Run an extraction to see the 12 structured fields appear here.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="placeholder">
+        <div class="placeholder-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Draft reply</h3>
+        <p>A follow-up reply will be generated here if any fields are missing.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results grid — shown after successful extraction -->
+  <div id="results-row" class="results-grid hidden">
+
+    <!-- LEFT: Extracted field chips -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <div>
+          <div class="card-title">Extracted fields</div>
+          <div class="card-desc">Prompt 3 (few-shot) · GPT-4o</div>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-box stat-primary"><div class="stat-num">12</div><div class="stat-label">Total</div></div>
+        <div class="stat-box stat-success"><div class="stat-num" id="stat-extracted">-</div><div class="stat-label">Extracted</div></div>
+        <div class="stat-box stat-danger"><div class="stat-num" id="stat-missing">-</div><div class="stat-label">Missing</div></div>
+      </div>
+      <div class="section-label">Field values</div>
+      <div class="fields-grid" id="fields-grid"></div>
+    </div>
+
+    <!-- RIGHT: Draft reply -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div>
+          <div class="card-title">Draft follow-up reply</div>
+          <div class="card-desc">Auto-generated for missing fields only</div>
+        </div>
+      </div>
+      <div class="reply-header">
+        <div class="section-label" style="margin-bottom:0">Generated reply</div>
+        <button class="btn-ghost" id="copy-btn" onclick="copyReply()" style="display:none">
+          <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy
+        </button>
+      </div>
+      <div id="reply-container"></div>
+    </div>
+
+  </div>
+</main>
+
+
+<!-- ============================================================
+     HISTORY PAGE
+     Displays the 50 extraction results from the thesis experiment
+     using Prompt 3 + GPT-4o (the recommended configuration).
+     Data is embedded directly as a JavaScript constant below.
+============================================================ -->
+<main id="page-history" class="hidden">
+
+  <div class="summary-grid">
+    <div class="summary-card">
+      <div class="label">Configuration</div>
+      <div class="value">Prompt 3</div>
+      <div class="sub">Few-shot · GPT-4o</div>
+    </div>
+    <div class="summary-card">
+      <div class="label">Experiment results</div>
+      <div class="value">50</div>
+      <div class="sub">Synthetic evaluation dataset</div>
+    </div>
+    <div class="summary-card">
+      <div class="label">Live extractions</div>
+      <div class="value" id="live-count">0</div>
+      <div class="sub">Added this session</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div>
+        <div class="card-title">Extraction results - Prompt 3 · GPT-4o</div>
+        <div class="card-desc">50 experiment emails + live extractions from this session</div>
+      </div>
+    </div>
+    <div class="history-controls">
+      <select id="filter-missing" onchange="renderTable()">
+        <option value="">All results</option>
+        <option value="complete">Complete - 0 missing fields</option>
+        <option value="partial">Partial - 1 to 5 missing</option>
+        <option value="incomplete">Incomplete - 6 or more missing</option>
+      </select>
+      <span class="history-count" id="history-count"></span>
+    </div>
+    <div class="history-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Event date</th>
+            <th>Event type</th>
+            <th>Attendees</th>
+            <th>External guests</th>
+            <th>Meal type</th>
+            <th>Room</th>
+            <th>Missing fields</th>
+          </tr>
+        </thead>
+        <tbody id="history-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+
+<footer>
+  <p>Xebia Hospitality Email Tool &nbsp;·&nbsp; <span>BSc Business Analytics</span> &nbsp;·&nbsp; University of Amsterdam &nbsp;·&nbsp; Proof of Concept</p>
+</footer>
+
+
+<script>
+  // ============================================================
+  // HISTORICAL EXPERIMENT DATA
+  // Results from running the pipeline on 50 synthetic emails
+  // using Prompt 3 (few-shot) + GPT-4o.
+  // Generated by extraction_pipeline_final.py in Google Colab.
+  // ============================================================
+  const HISTORY_DATA = [{"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 1, "event_date": "Thursday, March 5th", "event_type": "Workshop for potential clients", "event_time": "10:00 AM to 3:00 PM", "meal_type": "Lunch", "attendee_count": "18", "external_guests": "Potential clients", "catering_type": "Light lunch with sandwiches and salads", "office_location": NaN, "dietary_requirements": NaN, "room_location": "Orange Room", "av_equipment": NaN, "extra_arrangements": "Coffee and tea for the morning session", "missing_fields": "[\"office_location\", \"dietary_requirements\", \"av_equipment\"]", "draft_reply": "Subject: Request for Additional Information for Workshop on March 5th\n\nHi [Name],\n\nThank you for reaching out with the details for the upcoming workshop. I\u2019m happy to assist with the arrangements.\n\nCould you please provide a bit more information regarding:\n- The office location where the workshop will take place.\n- Any specific dietary requirements for the participants.\n- Any AV equipment needed for the session.\n\nOnce I have these details, I can proceed with the reservations and arrangements.\n\nThank you!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 2, "event_date": "Monday, April 14th", "event_type": "Tech Talk", "event_time": "Starting around 1:00 PM, entire afternoon", "meal_type": "Meal afterwards", "attendee_count": "25", "external_guests": NaN, "catering_type": "Pizzas or something easy", "office_location": "Wibaut office", "dietary_requirements": NaN, "room_location": "To be confirmed", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"external_guests\", \"dietary_requirements\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up: Tech Talk Room Reservation and Catering\n\nHi [Name],\n\nThank you for reaching out to us regarding your upcoming tech talk on April 14th at the Wibaut office. We're happy to assist with your arrangements.\n\nTo ensure everything goes smoothly, could you please provide a bit more information on the following?\n\n- Will there be any external guests attending the event?\n- Are there any specific dietary requirements we should be aware of for the meal?\n- Will you require any AV equipment for the tech talk?\n- Are there any extra arrangements or specific preferences you'd like us to consider?\n\nOnce we have these details, we can proceed with finalizing the room reservation and meal options for your event.\n\nLooking forward to your response!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 3, "event_date": "Wednesday, July 22", "event_type": "Partner event with SAP", "event_time": "2:00 PM to 6:00 PM", "meal_type": "Refreshments and snacks", "attendee_count": "15", "external_guests": "Stakeholders from SAP", "catering_type": "Refreshments and snacks", "office_location": NaN, "dietary_requirements": NaN, "room_location": NaN, "av_equipment": "AV equipment for presentations", "extra_arrangements": "Advise on a good spot for a post-meeting dinner", "missing_fields": "[\"office_location\", \"dietary_requirements\", \"room_location\"]", "draft_reply": "Subject: Additional Details Needed for Partner Event Coordination\n\nGood morning,\n\nThank you for reaching out with the details of the upcoming partner event. It sounds like a significant meeting, and we're here to ensure everything goes smoothly.\n\nTo finalize the arrangements, could you please provide the following information:\n- The office location where the event will be held\n- Any specific dietary requirements for the refreshments and snacks\n- Your preferred room location or any specific room requirements\n\nOnce we have these details, we'll proceed with organizing the space, AV equipment, and refreshments. Additionally, I can suggest a suitable venue for the post-meeting dinner.\n\nLooking forward to your reply. Thank you!\n\nBest regards,\n\n[Your Name]  \n[Your Position]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 4, "event_date": "Friday, May 8th", "event_type": "Strategy session", "event_time": NaN, "meal_type": "Lunch", "attendee_count": "7", "external_guests": NaN, "catering_type": "Simple lunch with wraps and salads", "office_location": NaN, "dietary_requirements": "Gluten-free", "room_location": "Paris Room", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"event_time\", \"external_guests\", \"office_location\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up on Your Strategy Session Request\n\nHi [Name],\n\nThank you for reaching out. I'd be happy to assist with your strategy session booking for this Friday, May 8th.\n\nTo ensure everything is set up perfectly, could you please provide a bit more information on the following:\n\n- The start and end time of the session\n- Whether there will be any external guests joining\n- The specific office location for the Paris Room\n- Any AV equipment needs\n- Any additional arrangements or requirements you might have\n\nOnce I have these details, I'll proceed with the arrangements. Looking forward to your reply!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 5, "event_date": "June 10th", "event_type": "Client engagement session", "event_time": "10:00 AM to 4:00 PM", "meal_type": "Lunch", "attendee_count": "20", "external_guests": "Visitors from Ericsson", "catering_type": "Buffet with multiple dietary options", "office_location": NaN, "dietary_requirements": NaN, "room_location": "Grand Caf\u00e9", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"office_location\", \"dietary_requirements\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up on Client Engagement Session Request\n\nHi [Name],\n\nThank you for reaching out to us with your request to host the client engagement session on June 10th. We\u2019re excited to assist you in making this event a success.\n\nTo proceed with the arrangements, could you please provide us with the following additional details?\n\n1. **Office Location**: Could you confirm which office location you\u2019re referring to for the reservation of the Grand Caf\u00e9?\n2. **Dietary Requirements**: Please let us know if there are any specific dietary requirements we should consider for the buffet.\n3. **AV Equipment**: Will you need any audio-visual equipment for the session?\n4. **Extra Arrangements**: Are there any other specific arrangements or amenities you might need for the day?\n\nOnce we have this information, we can ensure everything is set up perfectly for your event.\n\nLooking forward to your response.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 6, "event_date": "Thursday, September 15", "event_type": "Leadership workshop", "event_time": NaN, "meal_type": "Lunch", "attendee_count": "18", "external_guests": "External stakeholders", "catering_type": "Light lunch with selection of salads and wraps", "office_location": NaN, "dietary_requirements": "To be confirmed", "room_location": "A202", "av_equipment": "Projector", "extra_arrangements": NaN, "missing_fields": "[\"event_time\", \"office_location\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up on Leadership Workshop Request\n\nGood morning,\n\nThank you for reaching out regarding the upcoming leadership workshop on September 15. We are excited to assist with your event.\n\nTo ensure we accommodate your needs effectively, could you please provide the following additional details:\n- The start and end time of the workshop\n- The office location where the event will be held\n- Any extra arrangements or specific requirements you might have\n\nOnce we have this information, we can proceed with reserving the room, arranging lunch, and setting up the projector.\n\nLooking forward to your response.\n\nBest regards,\n\n[Your Name]  \nHospitality Team, Xebia"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 7, "event_date": "Thursday, March 10", "event_type": "Client workshop", "event_time": "9:00 AM", "meal_type": "Breakfast", "attendee_count": "25", "external_guests": "Client", "catering_type": "Simple breakfast with pastries and coffee", "office_location": "Hilversum office", "dietary_requirements": NaN, "room_location": "Meeting room", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"dietary_requirements\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up: Client Workshop Arrangements\n\nHi [Name],\n\nThank you for reaching out. We\u2019re excited to assist with the client workshop on March 10th at the Hilversum office.\n\nTo ensure everything goes smoothly, could you please provide the following additional details:\n\n1. Dietary requirements: Are there any specific dietary needs or preferences we should be aware of for the breakfast?\n2. AV equipment: Will you need any audio-visual equipment set up for the meeting room?\n3. Extra arrangements: Are there any other specific arrangements or requests for the event?\n\nOnce we have this information, we can proceed with the preparations.\n\nLooking forward to your response.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 8, "event_date": "Monday, October 3rd", "event_type": "Strategy session", "event_time": "10:00 to 3:00 PM", "meal_type": "Lunch", "attendee_count": "15", "external_guests": NaN, "catering_type": "Mix of sandwiches and a fruit platter", "office_location": NaN, "dietary_requirements": "To be confirmed, possible gluten-free request", "room_location": "G110", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"external_guests\", \"office_location\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-up on Strategy Session Arrangements\n\nHi [Name],\n\nThank you for reaching out to us with your request for the strategy session on October 3rd. We'd be happy to assist with the lunch arrangements.\n\nCould you please provide a bit more information to ensure everything is set up perfectly?\n- Will there be any external guests attending the session?\n- Can you confirm the office location?\n- Will you require any AV equipment for the session?\n- Are there any extra arrangements or special requirements we should be aware of?\n\nPlease let me know if there\u2019s anything else we can assist you with.\n\nLooking forward to your response.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 9, "event_date": "Thursday, July 7th", "event_type": "Roundtable discussion", "event_time": NaN, "meal_type": NaN, "attendee_count": "10", "external_guests": "TechAdvantage", "catering_type": "Refreshments with coffee, tea, and snacks", "office_location": "Laap office", "dietary_requirements": NaN, "room_location": "Paris room", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"event_time\", \"meal_type\", \"dietary_requirements\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up: Roundtable Discussion on July 7th\n\nHoi!\n\nThank you for reaching out with the details for the roundtable discussion on July 7th. I'm happy to assist in preparing the Paris room and arranging the refreshments.\n\nTo ensure everything is set up perfectly for the event, could you please provide the following additional details?\n\n- The event start and end time.\n- If there are any specific meal preferences or types beyond snacks, such as breakfast or lunch.\n- Any dietary requirements or restrictions we should be aware of.\n- Whether any AV equipment will be needed for the discussion.\n- If there are any extra arrangements or specific requests for the event setup.\n\nOnce I have this information, I'll make sure everything is arranged smoothly.\n\nThanks again, and no worries about the notice!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 10, "event_date": "Friday, August 20th", "event_type": "Internal training session", "event_time": "2:00 PM to 5:00 PM", "meal_type": NaN, "attendee_count": "12", "external_guests": NaN, "catering_type": NaN, "office_location": "Wibaut office", "dietary_requirements": NaN, "room_location": "Training room II", "av_equipment": NaN, "extra_arrangements": "Coffee station setup nearby", "missing_fields": "[\"meal_type\", \"external_guests\", \"catering_type\", \"dietary_requirements\", \"av_equipment\"]", "draft_reply": "Subject: Additional Details Needed for Training Room Reservation\n\nHi [Name],\n\nThank you for reaching out regarding your upcoming internal training session. I'm happy to assist with your request.\n\nTo ensure we have everything prepared for you, could you please provide the following details:\n- Will there be any external guests attending?\n- Are there any specific catering requirements or dietary preferences we should be aware of for the coffee station?\n- Do you require any AV equipment in the training room?\n\nOnce I have this information, I'll proceed with the arrangements.\n\nThanks again, and feel free to reach out if there's anything else you need.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 11, "event_date": "May 18", "event_type": "Client Workshop", "event_time": NaN, "meal_type": "Lunch", "attendee_count": "15", "external_guests": "KLM", "catering_type": "Simple lunch with sandwiches and salads", "office_location": NaN, "dietary_requirements": NaN, "room_location": "Grand Cafe", "av_equipment": NaN, "extra_arrangements": "Reserve a table for the group", "missing_fields": "[\"event_time\", \"office_location\", \"dietary_requirements\", \"av_equipment\"]", "draft_reply": "Subject: Follow-Up: Client Workshop Lunch Arrangements\n\nHi [Recipient's Name],\n\nThank you for the details regarding the KLM client workshop scheduled for May 18. I'd be happy to assist with arranging the lunch and reserving a table in the Grand Cafe.\n\nTo ensure everything is perfectly set up, could you please provide a few more details? Specifically, I need the event time, the office location, any dietary requirements the group might have, and whether AV equipment will be needed.\n\nOnce I have this information, I'll proceed with the arrangements right away.\n\nThanks for your help!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 12, "event_date": "Tuesday, July 7", "event_type": "Strategy meeting", "event_time": "09:00 to 15:00", "meal_type": "Breakfast and Lunch", "attendee_count": "18", "external_guests": NaN, "catering_type": "Light breakfast and lunch with vegetarian option", "office_location": "Utrecht office", "dietary_requirements": "To be confirmed", "room_location": "B201", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"external_guests\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Additional Details for Strategy Meeting on July 7\n\nHi [Name],\n\nThank you for the details regarding the strategy meeting on July 7 at our Utrecht office. We're looking forward to assisting with the arrangements.\n\nTo ensure everything is set up perfectly, could you please confirm if there will be any external guests attending the meeting? Additionally, let us know if you require any AV equipment or have any extra arrangements in mind for the session.\n\nLooking forward to your response.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 13, "event_date": "June 14", "event_type": "Coding Bootcamp", "event_time": "10:00 to 17:00", "meal_type": NaN, "attendee_count": "25", "external_guests": "A few from our partner company", "catering_type": "Snacks and drinks", "office_location": "Amsterdam office", "dietary_requirements": NaN, "room_location": "Training Room A", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"meal_type\", \"dietary_requirements\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up on Your June 14 Coding Bootcamp Request\n\nHi [Name],\n\nThank you for reaching out about the coding bootcamp scheduled for June 14. We're excited to host your event in Training Room A.\n\nTo ensure everything is set up perfectly, could you please provide a bit more information on the following:\n\n- Meal type: What kind of snacks and drinks would you prefer?\n- Dietary requirements: Are there any specific dietary needs we should be aware of for the attendees?\n- AV equipment: Will you require any specific audio-visual equipment for the session?\n- Extra arrangements: Are there any additional arrangements or setups needed for the day?\n\nLooking forward to your response so we can make all the necessary arrangements.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 14, "event_date": "Friday, April 21", "event_type": "Leadership team lunch", "event_time": NaN, "meal_type": "Lunch", "attendee_count": "8", "external_guests": NaN, "catering_type": "Catered lunch with sandwiches and fruit platter", "office_location": NaN, "dietary_requirements": NaN, "room_location": "Paris room", "av_equipment": NaN, "extra_arrangements": "Coffee and tea available", "missing_fields": "[\"event_time\", \"external_guests\", \"office_location\", \"dietary_requirements\", \"av_equipment\"]", "draft_reply": "Subject: Follow-Up on Leadership Team Lunch Details\n\nHi [Name],\n\nThank you for reaching out to us with your request for the leadership team lunch on April 21. We\u2019re happy to assist with the arrangements. To ensure everything is perfectly set up, could you please provide a few additional details?\n\n- What time will the lunch take place?\n- Will there be any external guests attending?\n- Could you confirm the office location where the Paris room is situated?\n- Are there any dietary requirements or preferences we should be aware of?\n- Will you need any AV equipment for this event?\n\nOnce we have this information, we can proceed with arranging the lunch to meet your needs.\n\nThank you, and looking forward to your reply!\n\nBest regards,\n\n[Your Name]  \nHospitality Team  \nXebia"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 15, "event_date": "March 30", "event_type": "Networking event", "event_time": "14:00 to 18:00", "meal_type": NaN, "attendee_count": "20", "external_guests": "Guests from Deloitte", "catering_type": "Selection of finger foods and soft drinks", "office_location": NaN, "dietary_requirements": "To be confirmed", "room_location": "Training Room C", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"meal_type\", \"office_location\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up on Networking Event Request\n\nGood afternoon,\n\nThank you for reaching out with the details for your networking event on March 30. To ensure we provide the best setup for your event, could you please provide a bit more information on the following:\n\n- The specific office location for the event.\n- Any audio-visual equipment needed for the event.\n- Any extra arrangements or specific setups you might require.\n\nAdditionally, while you mentioned a selection of finger foods and soft drinks, could you confirm if this aligns with your preferred meal type?\n\nLooking forward to your response so we can proceed with the arrangements.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 16, "event_date": "Monday, June 14", "event_type": "Brainstorming session with strategic partners", "event_time": NaN, "meal_type": "Pastries and coffee", "attendee_count": "To be confirmed", "external_guests": "Strategic partners", "catering_type": "Casual", "office_location": NaN, "dietary_requirements": NaN, "room_location": "A102", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"event_time\", \"office_location\", \"dietary_requirements\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Additional Information Needed for June 14th Event\n\nGood morning,\n\nThank you for reaching out with the request to host your upcoming brainstorming session. I'm happy to assist in setting this up for you.\n\nTo ensure we meet all your event needs, could you please provide the following additional details?\n\n- Event time: What time would you like the room reserved for?\n- Office location: Could you confirm which office location you'll be hosting the event at?\n- Dietary requirements: Do any of the attendees have specific dietary needs we should be aware of for the pastries and coffee?\n- AV equipment: Will you require any audio-visual equipment for the session?\n- Extra arrangements: Are there any other arrangements or special requests you would like us to consider?\n\nOnce I have this information, I'll be able to provide you with a cost estimate and finalize the arrangements.\n\nThank you, and I look forward to your reply.\n\nBest regards,\n\n[Your Name]\n[Your Position]\nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 17, "event_date": "Friday, October 23", "event_type": "Farewell gathering for a colleague", "event_time": NaN, "meal_type": "Lunch", "attendee_count": "15", "external_guests": NaN, "catering_type": "Catered lunch", "office_location": "Hilversum office", "dietary_requirements": "Vegan options", "room_location": "Grand Cafe", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"event_time\", \"external_guests\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up on Farewell Gathering Details\n\nHi [Name],\n\nThank you for reaching out to us with the details for the farewell gathering. We're excited to assist you in making it a memorable event.\n\nTo ensure everything is perfectly arranged, could you please provide a bit more information at your earliest convenience?\n- What time will the event take place?\n- Are there any external guests expected?\n- Will you require any AV equipment for the gathering?\n- Are there any additional arrangements or specific needs we should be aware of?\n\nOnce we have these details, we can proceed with the preparations and confirm the booking of the Grand Cafe.\n\nThanks again, and please feel free to reach out if there's anything else we can assist with.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 18, "event_date": "Wednesday, February 10", "event_type": "Full day workshop for tech client", "event_time": NaN, "meal_type": "Lunch", "attendee_count": "To be confirmed", "external_guests": "Tech client", "catering_type": "Light lunch with sandwiches and drinks", "office_location": "Wibaut office", "dietary_requirements": NaN, "room_location": "Training room", "av_equipment": NaN, "extra_arrangements": "Snacks for the afternoon session", "missing_fields": "[\"event_time\", \"dietary_requirements\", \"av_equipment\"]", "draft_reply": "Subject: Additional Information Needed for Upcoming Workshop\n\nHi [Name],\n\nThank you for reaching out with the details for the upcoming workshop on February 10 at the Wibaut office. We\u2019re excited to help make it a successful event!\n\nTo ensure everything is perfectly arranged, could you please provide a bit more information on the following:\n\n1. The start and end time of the workshop.\n2. Any specific dietary requirements we should be aware of for the lunch and snacks.\n3. Whether any AV equipment is needed for the session.\n\nOnce we have these details, we can proceed with the arrangements. Looking forward to your reply!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 19, "event_date": "Thursday, March 5", "event_type": "Meeting with Appian", "event_time": "10:00 AM to 2:00 PM", "meal_type": "Lunch", "attendee_count": "12", "external_guests": "Appian client", "catering_type": "Lunch with vegetarian options", "office_location": "Amsterdam", "dietary_requirements": "Vegetarian options", "room_location": "B212", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Additional Details Needed for Appian Meeting on March 5\n\nHi [Name],\n\nThank you for the details regarding the meeting with Appian on March 5. We're excited to host them at our Amsterdam office.\n\nCould you please let us know if there are any specific AV equipment requirements for the meeting? Additionally, if there are any extra arrangements or special requests we should be aware of, please share those details.\n\nLooking forward to your reply so we can ensure everything is perfectly arranged.\n\nBest regards,  \n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 20, "event_date": "Tuesday, July 8", "event_type": "Meeting with Paris office group", "event_time": "9 AM until 4 PM", "meal_type": "Lunch", "attendee_count": "16", "external_guests": "Group from Paris office", "catering_type": "Coffee and snacks throughout the day, simple lunch", "office_location": "Laap", "dietary_requirements": "To be confirmed", "room_location": NaN, "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"room_location\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up on Meeting Space Request for July 8\n\nDear [Requester's Name],\n\nThank you for reaching out to us with the details of the upcoming visit from the Paris office. We're glad to assist with the arrangements.\n\nTo ensure everything is set up perfectly for the meeting on July 8, could you please provide us with a bit more information?\n\n1. **Room Location:** Could you specify which room at the Laap location you would prefer?\n2. **AV Equipment:** Will the group require any specific AV equipment for their meeting?\n3. **Extra Arrangements:** Are there any additional arrangements or specific setups needed for the meeting space?\n\nPlease let us know at your earliest convenience, so we can proceed with the reservations and arrangements.\n\nLooking forward to your reply.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 21, "event_date": "Thursday, July 15", "event_type": "Executive roundtable with key partners", "event_time": "8:00 AM", "meal_type": "Breakfast", "attendee_count": "12", "external_guests": "Key partners", "catering_type": "Light breakfast with pastries, coffee, and tea", "office_location": "Amsterdam office", "dietary_requirements": "Gluten-free options", "room_location": "Paris room", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-up on Executive Roundtable Arrangements\n\nHi [Name],\n\nI hope this message finds you well! Thank you for reaching out with the details for the executive roundtable on July 15. We\u2019re excited to assist with the breakfast setup.\n\nTo ensure everything is perfectly arranged, could you please let us know if there will be any specific AV equipment requirements or any additional arrangements needed for the meeting?\n\nLooking forward to your confirmation on these details. Thanks again for your cooperation!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 22, "event_date": "Wednesday, August 10", "event_type": "Strategy workshop with Shell", "event_time": "2 PM to 5 PM", "meal_type": "Sandwiches and coffee", "attendee_count": "15", "external_guests": "Shell colleagues", "catering_type": "Sandwiches and coffee", "office_location": NaN, "dietary_requirements": NaN, "room_location": "Room 3.02", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"office_location\", \"dietary_requirements\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Additional Information Needed for Workshop Catering and Setup\n\nHi [Name],\n\nThank you for your request. We\u2019re happy to assist with the arrangements for the strategy workshop with Shell on August 10.\n\nTo ensure we meet all your needs, could you please provide a few additional details?\n- **Office Location:** Which office will the workshop be held in?\n- **Dietary Requirements:** Are there any dietary restrictions or preferences we should be aware of for the catering?\n- **AV Equipment:** Will you require any audio-visual equipment for the workshop?\n- **Extra Arrangements:** Are there any other specific arrangements or requests we should consider?\n\nLet us know at your earliest convenience so we can make the necessary arrangements.\n\nThanks again, and looking forward to supporting a successful workshop.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 23, "event_date": "Monday, September 5", "event_type": "Knowledge-sharing session", "event_time": NaN, "meal_type": "Lunch", "attendee_count": "20", "external_guests": "A few partners", "catering_type": "Catered lunch with sandwiches and salad bar", "office_location": "Hilversum office", "dietary_requirements": "Vegetarian option", "room_location": NaN, "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"event_time\", \"room_location\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Re: Catering Request for Knowledge-Sharing Session\n\nHi [Name],\n\nThank you for reaching out with the details of the upcoming knowledge-sharing session. It sounds like a great event!\n\nTo ensure everything is perfectly arranged, could you please provide a few additional details?\n\n- The event time: This will help us coordinate the catering schedule effectively.\n- Room location: Knowing the specific room will assist in setting up the lunch seamlessly.\n- AV equipment: Please let me know if any audio-visual equipment is required for the session.\n- Any extra arrangements: Are there any additional requests we should be aware of to make the event successful?\n\nLooking forward to your response, and thank you for the opportunity to assist with this event!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 24, "event_date": "Friday, June 25", "event_type": "Team-building event", "event_time": NaN, "meal_type": "Lunch", "attendee_count": "25", "external_guests": "Colleagues from Paris office", "catering_type": "Barbecue lunch", "office_location": NaN, "dietary_requirements": NaN, "room_location": "Rooftop terrace", "av_equipment": "Projector", "extra_arrangements": NaN, "missing_fields": "[\"event_time\", \"office_location\", \"dietary_requirements\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-up on Team-Building Event Request\n\nHi [Name],\n\nThank you for reaching out with the team-building event request for June 25. It sounds like a wonderful opportunity to connect with colleagues, including those visiting from Paris.\n\nTo ensure we accommodate everyone\u2019s needs and preferences, could you please provide a bit more information on the following:\n\n- The time you\u2019d like the event to start and end.\n- The specific office location where the event will be held.\n- Any dietary requirements or preferences we should be aware of for the barbecue lunch.\n- If there are any extra arrangements or special requests we should consider.\n\nOnce I have these details, I'll be able to confirm and finalize the arrangements for a successful event.\n\nLooking forward to your reply!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 25, "event_date": "Friday, October 22", "event_type": "Kick-off meeting for a new project", "event_time": "10:00 AM to 3:00 PM", "meal_type": NaN, "attendee_count": "To be confirmed", "external_guests": NaN, "catering_type": "Snacks, coffee, and tea", "office_location": NaN, "dietary_requirements": NaN, "room_location": "Berlin room", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"meal_type\", \"external_guests\", \"office_location\", \"dietary_requirements\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up on Hospitality Request for October 22\n\nDear [Name],\n\nThank you for reaching out with your request for the kick-off meeting on October 22. We're excited to assist in making your event a success!\n\nTo ensure we meet all your needs, could you please provide the following additional information:\n\n1. Will there be any external guests attending the meeting?\n2. Could you confirm the office location where the Berlin room is situated?\n3. Are there any specific dietary requirements we should be aware of?\n4. Will you require any AV equipment for the meeting?\n5. Are there any extra arrangements or special requests you would like us to consider?\n\nOnce we have these details, we can proceed with organizing everything for your meeting. Please feel free to update us with the number of attendees when it's convenient for you.\n\nThank you, and looking forward to your reply!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 26, "event_date": "Thursday, April 13", "event_type": "Strategy session with ING", "event_time": "10:00 AM to 4:00 PM", "meal_type": "Lunch", "attendee_count": "15", "external_guests": "ING", "catering_type": "Lunch with vegetarian options", "office_location": NaN, "dietary_requirements": "Vegetarian options", "room_location": "Amsterdam room", "av_equipment": "Projector", "extra_arrangements": NaN, "missing_fields": "[\"office_location\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-up on Strategy Session Reservation Request\n\nHi James,\n\nThank you for reaching out with the details of your upcoming strategy session with ING. To proceed with your request, could you please provide the office location where you'd like the Amsterdam room reserved? Additionally, if there are any extra arrangements or specific requirements for the session, please let us know.\n\nLooking forward to your response, and happy to assist further.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 27, "event_date": "Monday, March 8", "event_type": "Get-together for new hires", "event_time": "2:00 to 5:00 PM", "meal_type": "Snacks", "attendee_count": "8", "external_guests": NaN, "catering_type": "Coffee and snacks", "office_location": NaN, "dietary_requirements": NaN, "room_location": "Grand Caf\u00e9", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"external_guests\", \"office_location\", \"dietary_requirements\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-up on Your Get-Together Request\n\nHi Lisa,\n\nI hope this message finds you well. Thank you for reaching out with the details of your upcoming get-together for the new hires. It sounds like a wonderful event!\n\nTo ensure we have everything perfectly arranged for you, could you please provide a bit more information on the following:\n\n1. Will there be any external guests attending the event?\n2. Which office location will you be using?\n3. Are there any dietary requirements we should be aware of for the coffee and snacks?\n4. Will you need any AV equipment for your get-together?\n5. Are there any extra arrangements or special requests you would like us to consider?\n\nOnce I have these details, we can proceed to make the necessary arrangements.\n\nThank you, and looking forward to assisting you with this!\n\nBest regards,\n\n[Your Name]  \nHospitality Back-Office Team  \nXebia"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 28, "event_date": "Friday, November 15", "event_type": "Brainstorming session with Deloitte", "event_time": "9:00 AM", "meal_type": "Breakfast", "attendee_count": "12", "external_guests": "Deloitte", "catering_type": "Light breakfast", "office_location": NaN, "dietary_requirements": NaN, "room_location": "Paris room", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"office_location\", \"dietary_requirements\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up on Your Hospitality Request for November 15\n\nDear Robert,\n\nThank you for reaching out with your request for the Deloitte brainstorming session. We\u2019re happy to assist in arranging a light breakfast for your attendees.\n\nTo ensure everything is perfectly set up, could you please provide a few additional details:\n- The office location where the event will take place.\n- Any dietary requirements or preferences the attendees might have.\n- Whether you need any AV equipment for the session.\n- If there are any extra arrangements or specific requests you would like us to consider.\n\nOnce we have this information, we can proceed with the arrangements smoothly. \n\nLooking forward to your reply.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 29, "event_date": "Wednesday, August 23", "event_type": "Training day for internal staff", "event_time": NaN, "meal_type": "Lunch", "attendee_count": "18", "external_guests": NaN, "catering_type": "To be confirmed", "office_location": NaN, "dietary_requirements": NaN, "room_location": "B203", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"event_time\", \"external_guests\", \"office_location\", \"dietary_requirements\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Re: Tentative Lunch Reservation for Training Day\n\nHi Anna,\n\nThank you for reaching out with the lunch reservation request for your upcoming training day. To ensure we have everything in place, could you please provide a bit more information?\n\n- What time will the event take place?\n- Will there be any external guests joining?\n- Which office location should the lunch be delivered to?\n- Are there any specific dietary requirements we should be aware of?\n- Will you need any AV equipment for the training session?\n- Are there any extra arrangements or special requests we should consider?\n\nOnce I have these details, I'll be able to proceed with the tentative reservation. Looking forward to your confirmation by next Monday.\n\nThanks for your cooperation!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 30, "event_date": "Next Tuesday", "event_type": "Visit from Salesforce", "event_time": "1:00 PM to 5:00 PM", "meal_type": NaN, "attendee_count": "20", "external_guests": "Salesforce", "catering_type": "Coffee and tea service", "office_location": NaN, "dietary_requirements": "To be confirmed", "room_location": "Training room A101", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"meal_type\", \"office_location\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-up on Your Hospitality Request for Salesforce Visit\n\nHi Marco,\n\nThank you for reaching out with the details of the upcoming visit from Salesforce. We'll be happy to assist in making the arrangements for you.\n\nTo ensure everything is perfectly set up for the afternoon session, could you please provide a bit more information on the following:\n\n- What type of meal service, if any, would you like us to arrange alongside the coffee and tea?\n- Could you confirm the office location for the training room A101?\n- Will you require any AV equipment for the session?\n- Are there any extra arrangements or specific setups you'd like us to consider?\n\nFeel free to let us know as soon as possible, and we'll make sure everything is ready for the visit. Looking forward to your update on any dietary needs as well.\n\nThanks a lot!\n\nBest regards,  \n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 31, "event_date": "March 15th", "event_type": "Strategy catch-up", "event_time": "10:00 AM to 12:00 PM", "meal_type": "Light snacks and coffee", "attendee_count": "8", "external_guests": NaN, "catering_type": "Light snacks and coffee", "office_location": NaN, "dietary_requirements": NaN, "room_location": "Room B211", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"external_guests\", \"office_location\", \"dietary_requirements\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up on Strategy Catch-Up Request\n\nHi [Name],\n\nThank you for reaching out with the details of your strategy catch-up scheduled for March 15th. I\u2019m happy to assist with your arrangements.\n\nTo ensure everything goes smoothly, could you please provide a bit more information on the following:\n\n- Will there be any external guests attending the meeting?\n- Which office location should we plan for?\n- Are there any specific dietary requirements we should be aware of for the snacks and coffee?\n- Do you need any AV equipment set up in Room B211?\n- Are there any extra arrangements or specific preferences you\u2019d like us to consider?\n\nOnce I have these details, I\u2019ll be able to confirm the room availability and finalize the arrangements for your meeting.\n\nLooking forward to your response!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 32, "event_date": "February 5th", "event_type": "Potential partner visit", "event_time": NaN, "meal_type": "Lunch", "attendee_count": "14", "external_guests": "3 external guests", "catering_type": "Simple lunch with assorted sandwiches and a vegetarian option", "office_location": "Rotterdam", "dietary_requirements": "To be confirmed", "room_location": "Suitable meeting room", "av_equipment": NaN, "extra_arrangements": "Water and tea available throughout the meeting", "missing_fields": "[\"event_time\", \"av_equipment\"]", "draft_reply": "Subject: Additional Information Needed for Your February 5th Meeting\n\nHi [Name],\n\nThank you for your request regarding the meeting on February 5th. To ensure everything is perfectly arranged, could you please provide the following details:\n\n- The time the meeting is scheduled to start and end.\n- Whether any AV equipment will be required for the meeting.\n\nOnce I have this information, I'll proceed with reserving the meeting room and organizing the lunch and refreshments.\n\nLooking forward to your reply. \n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 33, "event_date": "April 22nd", "event_type": "Small team meeting", "event_time": "8:30 AM to noon", "meal_type": "Breakfast", "attendee_count": "10", "external_guests": NaN, "catering_type": "Breakfast with pastries and fruit", "office_location": NaN, "dietary_requirements": NaN, "room_location": "Room 3.02", "av_equipment": NaN, "extra_arrangements": "Breakfast setup in the Grand Caf\u00e9", "missing_fields": "[\"external_guests\", \"office_location\", \"dietary_requirements\", \"av_equipment\"]", "draft_reply": "Subject: Additional Details Needed for April 22nd Breakfast Meeting\n\nHi [Name],\n\nThank you for reaching out to arrange the breakfast setup for your team meeting on April 22nd. We\u2019re happy to assist with your request.\n\nTo ensure everything is prepared perfectly, could you please provide a bit more information on the following:\n\n- Will there be any external guests attending the meeting?\n- Which office location should we prepare the breakfast setup for?\n- Are there any specific dietary requirements we should be aware of?\n- Do you require any AV equipment for the meeting in Room 3.02?\n\nOnce we have these details, we can proceed with the arrangements.\n\nThanks so much for your help!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 34, "event_date": "July 9th", "event_type": "Project review session", "event_time": "2 PM to 5 PM", "meal_type": NaN, "attendee_count": "15", "external_guests": NaN, "catering_type": "Coffee and snacks", "office_location": "Amsterdam office", "dietary_requirements": "To be confirmed", "room_location": "A302", "av_equipment": "Projector", "extra_arrangements": NaN, "missing_fields": "[\"meal_type\", \"external_guests\", \"extra_arrangements\"]", "draft_reply": "Subject: Additional Details Needed for July 9th Project Review Session\n\nGood afternoon,\n\nThank you for your email regarding the project review session on July 9th. I am glad to assist with your arrangements.\n\nTo ensure everything is perfectly organized, could you please provide a bit more information on the following:\n\n1. Meal type: Would you like us to arrange for a specific type of meal during the session?\n2. External guests: Will there be any external guests attending the session?\n3. Extra arrangements: Are there any additional arrangements or equipment needed besides the projector?\n\nFeel free to let me know if there are any other special requests. Looking forward to your response.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 35, "event_date": "August 3rd", "event_type": "Small workshop", "event_time": "9:00 AM to noon", "meal_type": "Sandwiches and drinks", "attendee_count": "8", "external_guests": "2 guests", "catering_type": NaN, "office_location": "Hilversum office", "dietary_requirements": "To be confirmed", "room_location": "Any available space", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"catering_type\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Re: Workshop on August 3rd\n\nHi [Name],\n\nThank you for reaching out! We're happy to assist with your workshop arrangements.\n\nTo ensure everything is set up smoothly, could you please provide a bit more detail on the following:\n\n- Preferred catering type for the sandwiches and drinks (e.g., vegetarian, vegan, any specific preferences).\n- Any audio-visual equipment you might need for the workshop.\n- Any extra arrangements or specific setup you'd like for the space.\n\nOnce we have this information, we can proceed with the arrangements. Looking forward to assisting you further!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 36, "event_date": "Wednesday, July 22", "event_type": "Internal workshop for DevOps team", "event_time": "10:00 AM to 3:00 PM", "meal_type": "Lunch", "attendee_count": "18", "external_guests": NaN, "catering_type": "Salads and sandwiches", "office_location": "Hilversum office", "dietary_requirements": "Vegan", "room_location": "Training room", "av_equipment": "Projector", "extra_arrangements": NaN, "missing_fields": "[\"external_guests\", \"extra_arrangements\"]", "draft_reply": "Subject: Additional Information Required for Your Workshop Request\n\nHi [Name],\n\nThank you for reaching out with the details of your upcoming DevOps team workshop. It sounds like a great event!\n\nTo ensure we have everything arranged perfectly, could you please let us know if there will be any external guests attending? Additionally, if there are any extra arrangements or specific requirements beyond what you've mentioned, feel free to share those as well.\n\nLooking forward to your response so we can finalize the preparations.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 37, "event_date": "Friday, August 7th", "event_type": "Partner meeting with AWS", "event_time": "11:00 AM to 3:00 PM", "meal_type": "Lunch", "attendee_count": "12", "external_guests": "AWS", "catering_type": "Mix of wraps and fruit platters", "office_location": "Wibaut office", "dietary_requirements": "To be confirmed", "room_location": NaN, "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"room_location\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Re: Partner Meeting with AWS on August 7th\n\nHi [Name],\n\nThank you for your email. I'll be happy to assist with organizing the partner meeting with AWS.\n\nTo ensure everything is set up perfectly, could you please provide a bit more information regarding:\n\n- The specific room location within the Wibaut office you prefer, if any.\n- Any AV equipment requirements for the meeting.\n- Any extra arrangements or amenities you might need during the meeting.\n\nOnce I have these details, I'll proceed with the reservations and arrangements. Looking forward to your reply.\n\nThanks and cheers,\n\n[Your Name]"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 38, "event_date": "Monday, September 14", "event_type": "Team-building session", "event_time": "2:00 PM", "meal_type": "Snacks and drinks", "attendee_count": "25", "external_guests": NaN, "catering_type": NaN, "office_location": NaN, "dietary_requirements": NaN, "room_location": "Bangalore room", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"external_guests\", \"catering_type\", \"office_location\", \"dietary_requirements\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Additional Details Needed for Team-Building Session\n\nHi [Name],\n\nThank you for reaching out to us regarding the team-building session on Monday, September 14. We'd be happy to assist you with the arrangements. To ensure everything goes smoothly, could you please provide the following details?\n\n1. Will there be any external guests attending the session?\n2. What type of catering would you prefer for the snacks and drinks?\n3. Can you confirm the office location for the event?\n4. Are there any specific dietary requirements we should be aware of?\n5. Do you require any AV equipment for the session?\n6. Are there any extra arrangements or special requests we should consider?\n\nOnce we have this information, we'll proceed with securing the Bangalore room and organizing the refreshments.\n\nThank you for your cooperation, and please feel free to reach out if you have any questions.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 39, "event_date": "Thursday, October 15th", "event_type": "Client meeting with ING", "event_time": "1:00 PM until 5:00 PM", "meal_type": "Lunch", "attendee_count": "15", "external_guests": "ING", "catering_type": "Catered lunch with vegetarian options", "office_location": "Amsterdam", "dietary_requirements": "Vegetarian options", "room_location": "Paris room", "av_equipment": NaN, "extra_arrangements": "Setup with chairs in a semicircle", "missing_fields": "[\"av_equipment\"]", "draft_reply": "Subject: Follow-Up on Room Booking for ING Meeting\n\nDear [Sender's Name],\n\nThank you for your request regarding the client meeting with ING on October 15th. We are in the process of arranging the Paris room and catering as per your specifications.\n\nCould you please confirm if any AV equipment will be needed for the meeting? This will help us ensure everything is set up perfectly for your event.\n\nFeel free to reach out if there's anything else you need. Looking forward to your response.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 40, "event_date": "Tuesday, November 3", "event_type": "Internal product demo", "event_time": "Full day", "meal_type": "Lunch", "attendee_count": "20", "external_guests": NaN, "catering_type": "Light lunch with sandwiches", "office_location": "Wibaut office", "dietary_requirements": NaN, "room_location": "Training Room A", "av_equipment": "Projector", "extra_arrangements": NaN, "missing_fields": "[\"external_guests\", \"dietary_requirements\", \"extra_arrangements\"]", "draft_reply": "Subject: Additional Details for Product Demo on November 3\n\nHi [Name],\n\nThank you for your request regarding the internal product demo on November 3. I'd be happy to assist with the arrangements.\n\nCould you please let me know if there will be any external guests attending the event? Additionally, it would be helpful to know if there are any dietary requirements we should consider for lunch. Lastly, if there are any extra arrangements or specific needs beyond what you've mentioned, please do let me know.\n\nLooking forward to your response.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 41, "event_date": "October 25", "event_type": "Strategy session with key partners", "event_time": "14:00 to 18:00", "meal_type": "Light refreshments", "attendee_count": "18", "external_guests": "4 from external companies", "catering_type": "Sandwiches and drinks", "office_location": "Laap office", "dietary_requirements": "To be confirmed", "room_location": "One of the larger training rooms", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Re: Strategy Session on October 25\n\nGood morning,\n\nThank you for your request. The strategy session sounds exciting and we are happy to assist in making the necessary arrangements.\n\nTo ensure everything is perfectly set up for your needs, could you please let us know if you require any AV equipment for the meeting? Additionally, if there are any extra arrangements or specific setups you have in mind, please share those details with us.\n\nLooking forward to your response and happy to assist further!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 42, "event_date": "Friday, November 7", "event_type": "Meeting with a client", "event_time": "10:00 AM to 1:00 PM", "meal_type": "Lunch", "attendee_count": "15", "external_guests": "3 people from the client side", "catering_type": "Simple catered lunch with sandwiches and salads", "office_location": "Hilversum office", "dietary_requirements": "Vegetarian-friendly option", "room_location": "Meeting room", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Additional Information Needed for Your Meeting Request\n\nHi [Name],\n\nThank you for reaching out with your meeting request for November 7 at the Hilversum office. I\u2019m currently in the process of arranging everything for you.\n\nCould you please let me know if you will need any AV equipment for the meeting? Additionally, if there are any extra arrangements or specific requirements you might have, feel free to share those as well.\n\nLooking forward to your response so we can ensure everything is perfectly set up for your meeting.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 43, "event_date": "Monday, October 20", "event_type": "Internal workshop on Agile practices", "event_time": "9:00 AM to 3:00 PM", "meal_type": NaN, "attendee_count": "25", "external_guests": NaN, "catering_type": "Coffee and tea setup with snacks", "office_location": "Wibaut office", "dietary_requirements": "To be confirmed", "room_location": "Room suitable for 25 people", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"meal_type\", \"external_guests\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up on Workshop Arrangements\n\nHi [Name],\n\nThank you for reaching out about the upcoming Agile practices workshop. It sounds like a great initiative!\n\nTo ensure everything is perfectly set up, could you please provide a bit more information on the following:\n\n1. Meal Type: Will you need lunch arrangements, or just snacks throughout the day?\n2. External Guests: Will there be any external guests attending, aside from the possible gluten-free ones you mentioned?\n3. AV Equipment: Will you require any audiovisual equipment for presentations or discussions?\n4. Extra Arrangements: Are there any additional arrangements or specific requirements you foresee needing?\n\nOnce I have these details, I'll proceed with the reservations and arrangements.\n\nThanks for your cooperation!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 44, "event_date": "Thursday, October 12", "event_type": "Meeting", "event_time": "8:30 to 11:30", "meal_type": "Breakfast", "attendee_count": "12", "external_guests": "Partners from Appian", "catering_type": "Catered breakfast with pastries, fruits, and juices", "office_location": "Amsterdam", "dietary_requirements": "To be confirmed", "room_location": "Boardroom", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-up on Catered Breakfast Request for October 12\n\nDear [Name],\n\nThank you for reaching out to us with your catering request for the upcoming meeting on October 12. We're happy to assist in arranging the breakfast.\n\nTo ensure everything is set up perfectly for the meeting in the Boardroom, could you please let us know if there are any specific AV equipment requirements or any extra arrangements you'd like us to make?\n\nLooking forward to your reply.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 45, "event_date": "Friday, December 1", "event_type": "Team-building event", "event_time": "16:00 to 18:30", "meal_type": "Dinner", "attendee_count": "30", "external_guests": NaN, "catering_type": "Buffet-style dinner", "office_location": NaN, "dietary_requirements": NaN, "room_location": "Grand Caf\u00e9", "av_equipment": "To be confirmed", "extra_arrangements": "Series of fun activities", "missing_fields": "[\"external_guests\", \"office_location\", \"dietary_requirements\"]", "draft_reply": "Subject: Additional Information Needed for Team-Building Event\n\nHi [Recipient's Name],\n\nThank you for reaching out to us regarding the upcoming team-building event at the Grand Caf\u00e9. It sounds like a fantastic plan!\n\nTo ensure everything is perfectly arranged, could you please provide a bit more information on the following:\n\n1. Will there be any external guests joining the event?\n2. Which office location should we consider for coordination purposes?\n3. Are there any specific dietary requirements we should be aware of for the dinner?\n\nOnce we have these details, we can proceed with the arrangements and provide you with the best options for the event.\n\nLooking forward to your reply. Thank you!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 46, "event_date": "March 14th", "event_type": "Gathering with DevOps partners", "event_time": NaN, "meal_type": "Lunch", "attendee_count": "18", "external_guests": "DevOps partners", "catering_type": "Sandwiches or small buffet", "office_location": NaN, "dietary_requirements": "To be confirmed", "room_location": "Paris room", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"event_time\", \"office_location\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up: Gathering on March 14th\n\nHello,\n\nThank you for reaching out with your request for the gathering on March 14th. We're excited to assist with the arrangements.\n\nTo ensure everything goes smoothly, could you please provide a bit more information on the following:\n\n- The specific time of the event.\n- The office location where this will be held.\n- Any AV equipment you might need for the gathering.\n- Any extra arrangements or setups you might require.\n\nOnce we have these details, we'll be able to confirm the availability of the Paris room and arrange the catering as requested.\n\nLooking forward to your reply!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 47, "event_date": "January 22nd", "event_type": "Visit from Berlin office colleagues", "event_time": "8:30 AM", "meal_type": "Breakfast", "attendee_count": "15", "external_guests": "Colleagues from Berlin office", "catering_type": "Mix of pastries, fruits, coffee, and juice", "office_location": NaN, "dietary_requirements": NaN, "room_location": "Grand Caf\u00e9", "av_equipment": "Projector", "extra_arrangements": NaN, "missing_fields": "[\"office_location\", \"dietary_requirements\", \"extra_arrangements\"]", "draft_reply": "Subject: Re: Hospitality Request for January 22nd\n\nDear [Name],\n\nThank you for reaching out with your request for a welcoming breakfast for our Berlin colleagues. We are excited to assist in making their visit enjoyable.\n\nTo ensure we have everything arranged perfectly, could you please provide the following details?\n\n1. **Office Location**: Kindly confirm the location where the breakfast will be held.\n2. **Dietary Requirements**: Please let us know if any of the guests have specific dietary needs or preferences.\n3. **Extra Arrangements**: Besides the projector, are there any other specific arrangements or equipment you might require?\n\nOnce we have this information, we can proceed with making the necessary arrangements.\n\nLooking forward to your response.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Back-Office Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 48, "event_date": "Tuesday, October 10th", "event_type": "Client workshop", "event_time": NaN, "meal_type": "Lunch", "attendee_count": "25", "external_guests": "Client", "catering_type": "Simple lunch with sandwiches and salads", "office_location": "Hilversum office", "dietary_requirements": "To be confirmed", "room_location": "Training room", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"event_time\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up on Workshop Arrangements for October 10th\n\nHi [Name],\n\nThank you for reaching out regarding the client workshop scheduled for next Tuesday, October 10th, at the Hilversum office. I'm happy to assist with the arrangements.\n\nCould you please provide the following details to ensure everything is set up perfectly?\n\n- The time the workshop will begin and end.\n- Any specific AV equipment you might need.\n- Any extra arrangements or facilities required for the workshop.\n\nLooking forward to your confirmation on these details, as well as the number of participants and any dietary restrictions at your earliest convenience.\n\nThank you!\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 49, "event_date": "November 3rd", "event_type": "Internal team-building session", "event_time": "13:00 to evening", "meal_type": "Dinner", "attendee_count": "30", "external_guests": NaN, "catering_type": "Light dinner", "office_location": "Utrecht office", "dietary_requirements": "Vegetarian preferences", "room_location": NaN, "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"external_guests\", \"room_location\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up on Team-Building Session Arrangements\n\nDear [Name],\n\nThank you for reaching out to us regarding the team-building session on November 3rd. We are excited to assist with the arrangements for your event at the Utrecht office.\n\nTo ensure everything is set up perfectly, could you please provide a bit more information regarding the following:\n\n- Will there be any external guests joining the session?\n- Which room or area in the Utrecht office will you be using for the event?\n- Do you require any AV equipment for the session?\n- Are there any extra arrangements or specific requirements we should be aware of?\n\nOnce we have these details, we can proceed with organizing the light dinner and any other necessary preparations.\n\nLooking forward to your reply.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}, {"prompt_version": "v3", "model_name": "gpt-4o", "email_id": 50, "event_date": "February 5th", "event_type": "Meeting with TechSavvy", "event_time": "10:00 AM", "meal_type": NaN, "attendee_count": "10", "external_guests": "TechSavvy", "catering_type": "Coffee, tea, and snacks", "office_location": NaN, "dietary_requirements": "To be confirmed", "room_location": "Boardroom", "av_equipment": NaN, "extra_arrangements": NaN, "missing_fields": "[\"meal_type\", \"office_location\", \"av_equipment\", \"extra_arrangements\"]", "draft_reply": "Subject: Follow-Up on Meeting Arrangements with TechSavvy\n\nHi [Requester's Name],\n\nThank you for reaching out to us regarding the upcoming meeting with TechSavvy. We're excited to assist you with the arrangements!\n\nTo ensure everything is perfectly set up, could you please provide a bit more information on the following:\n\n- The meal type you'd prefer for the snacks.\n- The office location where the Boardroom is needed.\n- Any specific AV equipment required for the meeting.\n- Any extra arrangements or special requests you might have in mind.\n\nFeel free to update us once you have the dietary information as well. Looking forward to your reply so we can finalize the details.\n\nBest regards,\n\n[Your Name]  \nXebia Hospitality Team"}];
+
+
+  // ============================================================
+  // SCHEMA CONSTANTS
+  // The 12 field names and their human-readable display labels
+  // ============================================================
+  const FIELDS = [
+    "event_date", "event_type", "event_time", "meal_type",
+    "attendee_count", "external_guests", "catering_type",
+    "office_location", "dietary_requirements", "room_location",
+    "av_equipment", "extra_arrangements"
+  ];
+
+  const LABELS = {
+    event_date:           "Event date",
+    event_type:           "Event type",
+    event_time:           "Event time",
+    meal_type:            "Meal type",
+    attendee_count:       "Attendee count",
+    external_guests:      "External guests",
+    catering_type:        "Catering type",
+    office_location:      "Office location",
+    dietary_requirements: "Dietary requirements",
+    room_location:        "Room location",
+    av_equipment:         "AV equipment",
+    extra_arrangements:   "Extra arrangements"
+  };
+
+
+  // ============================================================
+  // EXTRACTION PROMPT (Prompt 3 - Few-shot)
+  // This is the system prompt sent to GPT-4o for extraction.
+  //
+  // Design decisions:
+  // - Xebia context added so model knows the domain
+  // - Field definitions reduce ambiguity in interpretation
+  // - Two real annotated examples demonstrate the output format
+  // - Strict rules prevent the model adding extra text
+  // - Temperature 0 ensures reproducible deterministic output
+  // ============================================================
+  const EXTRACTION_PROMPT = `You are an information extraction assistant for Xebia's hospitality back-office team.
+Your task is to extract specific information from hospitality request emails.
+
+Extract the following 12 fields. Use the definitions to guide extraction:
+- event_date: The date the event needs to take place.
+- event_type: The purpose of the event.
+- event_time: Start and/or end time of the event.
+- meal_type: The type of meal to be included, if any.
+- attendee_count: Total number of people expected to attend.
+- external_guests: The name or description of any external (non-Xebia) guests attending the event.
+- catering_type: The type of catering required, given that a meal is included.
+- office_location: The Xebia office at which the event will take place.
+- dietary_requirements: Any dietary restrictions or requirements among attendees.
+- room_location: The specific room or space within the office where the event is to be held.
+- av_equipment: The type of audio-visual equipment required for the event.
+- extra_arrangements: Any special or additional arrangements to be made for the event.
+
+Rules:
+- Return ONLY a valid JSON object with exactly these 12 field names as keys
+- If a field is not mentioned in the email, return null for that field
+- If a sender explicitly states they will provide a value later, extract as "To be confirmed"
+- Do not add any extra text, explanation or markdown — just the raw JSON object
+
+Example 1:
+Email: Morning, On Wednesday 20 May, a team from Microsoft will come to us to organize a meeting. They come with a total of 20 people. I have already reserved the A201 for this. They will have lunch with the normal lunch, so good to take this into account. Do you want to prepare the space for 26 people and then with only chairs in a large circle?
+Output: {"event_date":"Wednesday 20 May","event_type":"Meeting with Microsoft","event_time":null,"meal_type":"Lunch","attendee_count":"26","external_guests":"Microsoft team","catering_type":"Normal lunch buffet","office_location":null,"dietary_requirements":null,"room_location":"A201","av_equipment":null,"extra_arrangements":"Room setup with chairs in large circle"}
+
+Example 2:
+Email: Morning, On April 29, one of our customers will come to the office. Can you arrange a catered lunch? Preferably with sandwiches and a soup. Concerns a total of 10 people. I have requested dietary requirements and will let you know no later than thursday. Also, can you put a platter with goodies in the bangalore together with some fruit, also arrange a snack for the afternoon.
+Output: {"event_date":"April 29","event_type":"Customer Visit","event_time":null,"meal_type":"Lunch","attendee_count":"10","external_guests":"One of our customers","catering_type":"Catered lunch with sandwiches and soup","office_location":null,"dietary_requirements":"To be confirmed","room_location":null,"av_equipment":null,"extra_arrangements":"Platter with goodies and fruit in Bangalore, snack in the afternoon"}
+
+Now extract from the email below using exactly the same format.`;
+
+
+  // ============================================================
+  // PAGE NAVIGATION
+  // Switches visible page by toggling the .hidden class on
+  // the two <main> elements
+  // ============================================================
+  function showPage(page, el) {
+    document.querySelectorAll("main").forEach(m => m.classList.add("hidden"));
+    document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active"));
+    document.getElementById("page-" + page).classList.remove("hidden");
+    el.classList.add("active");
+    if (page === "history") renderTable();
+  }
+
+
+  // ============================================================
+  // UTILITY: cleanJson
+  // Strips markdown code fences (```json ... ```) from model
+  // output. The prompt instructs the model not to add these,
+  // but this is a defensive fallback in case it does.
+  // ============================================================
+  function cleanJson(raw) {
+    let c = raw.trim();
+    if (c.startsWith("```")) {
+      c = c.split("\n").filter(l => !l.trim().startsWith("```")).join("\n").trim();
+    }
+    return c;
+  }
+
+  // Show a message in the red error alert bar
+  function showError(msg) {
+    document.getElementById("error-msg").textContent = msg;
+    document.getElementById("alert-error").classList.remove("hidden");
+  }
+
+  // Show or hide the blue loading indicator bar
+  function setLoading(msg) {
+    if (msg) {
+      document.getElementById("loading-msg").textContent = msg;
+      document.getElementById("alert-loading").classList.remove("hidden");
+    } else {
+      document.getElementById("alert-loading").classList.add("hidden");
+    }
+  }
+
+  // Count how many fields were missing for a history row
+  function getMissingCount(row) {
+    try {
+      const mf = row.missing_fields;
+      if (!mf || mf === "[]" || mf === "null") return 0;
+      return JSON.parse(mf).length;
+    } catch { return 0; }
+  }
+
+
+  // ============================================================
+  // MAIN EXTRACTION FUNCTION
+  // Triggered by the Run extraction button.
+  //
+  // Steps:
+  //   1. Validate API key and email text are present
+  //   2. Call OpenAI API — extraction step (temp=0)
+  //   3. Parse the JSON response and identify missing fields
+  //   4. Render the 12 field chips with present/missing status
+  //   5. If any fields are missing, call GPT-4o again to
+  //      generate a draft follow-up reply (temp=0.7)
+  // ============================================================
+  async function runExtraction() {
+    const apiKey    = document.getElementById("apikey").value.trim();
+    const emailText = document.getElementById("email-input").value.trim();
+    const btn       = document.getElementById("extract-btn");
+
+    // Clear previous alerts
+    document.getElementById("alert-error").classList.add("hidden");
+    document.getElementById("alert-loading").classList.add("hidden");
+
+    // Input validation
+    if (!apiKey)    { showError("Please enter your OpenAI API key in the navigation bar."); return; }
+    if (!emailText) { showError("Please paste a hospitality request email."); return; }
+
+    // Show loading state
+    btn.disabled = true;
+    btn.innerHTML = '<div class="spinner"></div> Extracting fields...';
+    document.getElementById("placeholder-row").classList.add("hidden");
+    document.getElementById("results-row").classList.add("hidden");
+
+    try {
+
+      // ── STEP 1: EXTRACTION API CALL ──────────────────────────
+      // Send the email to GPT-4o with the few-shot extraction prompt.
+      // Temperature 0 = deterministic, same output for same input.
+      setLoading("Extracting fields from email...");
+
+      const extractRes = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          model: "gpt-4o",
+          messages: [
+            { role: "system", content: EXTRACTION_PROMPT },
+            { role: "user",   content: `Email:\n${emailText}` }
+          ],
+          temperature: 0
+        })
+      });
+
+      if (!extractRes.ok) {
+        const err = await extractRes.json();
+        throw new Error(err.error?.message || "OpenAI API error — check your API key.");
+      }
+
+      const extractData = await extractRes.json();
+      const extracted   = JSON.parse(cleanJson(extractData.choices[0].message.content));
+
+      // ── STEP 2: IDENTIFY MISSING FIELDS ─────────────────────
+      const missing      = FIELDS.filter(f => { const v = extracted[f]; return v === null || v === undefined || v === "null" || v === ""; });
+      const presentCount = FIELDS.length - missing.length;
+
+      // ── STEP 3: RENDER FIELD CHIPS ───────────────────────────
+      document.getElementById("stat-extracted").textContent = presentCount;
+      document.getElementById("stat-missing").textContent   = missing.length;
+
+      const grid = document.getElementById("fields-grid");
+      grid.innerHTML = "";
+
+      FIELDS.forEach(f => {
+        const val         = extracted[f];
+        const isNull      = val === null || val === undefined || val === "null" || val === "";
+        const isConfirmed = typeof val === "string" && val.toLowerCase().includes("to be confirmed");
+        const chipClass   = isNull ? "missing" : isConfirmed ? "confirmed" : "present";
+        const valueHTML   = isNull
+          ? '<div class="chip-null">not provided</div>'
+          : isConfirmed
+            ? `<div class="chip-confirmed">${val}</div>`
+            : `<div class="chip-value">${val}</div>`;
+        grid.innerHTML += `<div class="field-chip ${chipClass}"><div class="chip-label">${LABELS[f]}</div>${valueHTML}</div>`;
+      });
+
+      // ── STEP 4: GENERATE REPLY IF FIELDS ARE MISSING ─────────
+      const replyContainer = document.getElementById("reply-container");
+      const copyBtn        = document.getElementById("copy-btn");
+
+      if (missing.length === 0) {
+        // All 12 fields extracted — no reply needed
+        replyContainer.innerHTML = '<div class="all-good"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>All fields extracted — no follow-up required.</div>';
+        copyBtn.style.display = "none";
+
+      } else {
+        // Generate a follow-up reply requesting only the missing fields.
+        // Temperature 0.7 allows natural variation in phrasing.
+        setLoading("Generating follow-up reply...");
+        btn.innerHTML = '<div class="spinner"></div> Generating reply...';
+
+        const missingList = missing.map(f => `- ${LABELS[f]}`).join("\n");
+
+        const replyPrompt = `You are a professional assistant working for Xebia's hospitality back-office team.
+
+You received the following hospitality request email:
+${emailText}
+
+The following information is missing from this request and is needed to process it:
+${missingList}
+
+Write a short, polite and professional follow-up email requesting only the missing information listed above.
+Do not ask for information that was already provided. Keep the tone friendly as this is internal office communication.`;
+
+        const replyRes = await fetch("https://api.openai.com/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${apiKey}`
+          },
+          body: JSON.stringify({
+            model: "gpt-4o",
+            messages: [{ role: "user", content: replyPrompt }],
+            temperature: 0.7
+          })
+        });
+
+        if (!replyRes.ok) throw new Error("Reply generation failed.");
+
+        const replyData = await replyRes.json();
+        const replyText = replyData.choices[0].message.content;
+
+        replyContainer.innerHTML  = `<div class="reply-text">${replyText}</div>`;
+        copyBtn.style.display     = "inline-flex";
+        window._replyText         = replyText; // stored for the copy button
+      }
+
+      // ── STEP 5: ADD TO HISTORY ──────────────────────────────
+      // Push this extraction into HISTORY_DATA so it appears
+      // at the top of the History tab in this session
+      const liveRow = {
+        _live: true,
+        email_id: "Live",
+        prompt_version: "v3",
+        model_name: "gpt-4o",
+        missing_fields: JSON.stringify(missing),
+        draft_reply: window._replyText || null,
+        ...Object.fromEntries(FIELDS.map(f => [f, extracted[f] || null]))
+      };
+      HISTORY_DATA.unshift(liveRow);
+
+      // Update the live extraction counter on the history summary card
+      const liveCount = HISTORY_DATA.filter(r => r._live).length;
+      const liveEl = document.getElementById("live-count");
+      if (liveEl) liveEl.textContent = liveCount;
+
+      setLoading(null);
+      document.getElementById("results-row").classList.remove("hidden");
+
+    } catch (e) {
+      setLoading(null);
+      showError(e.message || "Something went wrong. Please check your API key and try again.");
+      document.getElementById("placeholder-row").classList.remove("hidden");
+
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Run extraction';
+    }
+  }
+
+
+  // ============================================================
+  // COPY REPLY TO CLIPBOARD
+  // Copies the generated reply text and shows a brief
+  // confirmation on the button before resetting
+  // ============================================================
+  function copyReply() {
+    if (window._replyText) {
+      navigator.clipboard.writeText(window._replyText);
+      const btn = document.getElementById("copy-btn");
+      btn.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+      setTimeout(() => {
+        btn.innerHTML = '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy';
+      }, 2000);
+    }
+  }
+
+
+  // ============================================================
+  // RENDER HISTORY TABLE
+  // Filters HISTORY_DATA by missing field count and renders
+  // rows into the history table. Called on page switch and
+  // whenever the filter dropdown changes.
+  // ============================================================
+  function renderTable() {
+    const filterMissing = document.getElementById("filter-missing").value;
+
+    const filtered = HISTORY_DATA.filter(row => {
+      if (!filterMissing) return true;
+      const mc = getMissingCount(row);
+      if (filterMissing === "complete"   && mc !== 0)           return false;
+      if (filterMissing === "partial"    && (mc < 1 || mc > 5)) return false;
+      if (filterMissing === "incomplete" && mc < 6)             return false;
+      return true;
+    });
+
+    document.getElementById("history-count").textContent = `${filtered.length} results`;
+
+    const val   = (row, f) => row[f] || '<span style="color:var(--gray-400);font-style:italic">-</span>';
+
+    const tbody = document.getElementById("history-tbody");
+    tbody.innerHTML = filtered.map(row => {
+      const mc      = getMissingCount(row);
+      const mcClass = mc === 0 ? "mc-0" : mc <= 5 ? "mc-low" : "mc-high";
+      const isLive = row._live === true;
+      return `<tr>
+        <td><span class="email-id">${isLive ? 'Live' : '#' + row.email_id}</span>${isLive ? '<span class="badge-live">new</span>' : ''}</td>
+        <td>${val(row, "event_date")}</td>
+        <td>${val(row, "event_type")}</td>
+        <td>${val(row, "attendee_count")}</td>
+        <td>${val(row, "external_guests")}</td>
+        <td>${val(row, "meal_type")}</td>
+        <td>${val(row, "room_location")}</td>
+        <td><span class="missing-count ${mcClass}">${mc} missing</span></td>
+      </tr>`;
+    }).join("");
+  }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,1294 @@
+prompt_version,model_name,email_id,event_date,event_type,event_time,meal_type,attendee_count,external_guests,catering_type,office_location,dietary_requirements,room_location,av_equipment,extra_arrangements,missing_fields,draft_reply
+v1,gpt-4o,1,"Thursday, March 5th",workshop,10:00 AM to 3:00 PM,"light lunch, coffee and tea",18,Yes,,,,Orange Room,,,"[""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,2,"Monday, April 14th",tech talk,1:00 PM,pizzas or something easy,25,,,Wibaut office,,,,,"[""external_guests"", ""catering_type"", ""dietary_requirements"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,3,"Wednesday, July 22",partner event,2:00 PM to 6:00 PM,refreshments and snacks,15,,,,,,some AV equipment for presentations,advise on a good spot for a post-meeting dinner,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""room_location""]",
+v1,gpt-4o,4,May 8th,strategy session,,lunch,7,,wraps and salads,,gluten-free,Paris Room,,,"[""event_time"", ""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,5,June 10th,client engagement session,10:00 AM to 4:00 PM,lunch,20,visitors from Ericsson,buffet,,multiple dietary options,Grand Café,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,6,"Thursday, September 15",leadership workshop,,light lunch,around 18,a mix of internal and external stakeholders,selection of salads and wraps,,To be confirmed,A202,projector,,"[""event_time"", ""office_location"", ""extra_arrangements""]",
+v1,gpt-4o,7,"Thursday, March 10",client workshop,9:00 AM,breakfast,25,,simple breakfast,Hilversum office,,meeting room,,,"[""external_guests"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,8,"Monday, October 3rd",strategy session,10:00 to 3:00 PM,lunch,15,,sandwiches and a fruit platter,,To be confirmed,G110 room,,,"[""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,9,"Thursday, July 7th",roundtable discussion,,"refreshments like coffee, tea, and perhaps a few snacks",10,"a few from our partner, TechAdvantage",,Laap office,,Paris room,,,"[""event_time"", ""catering_type"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,10,"Friday, August 20th",internal training session,2:00 PM to 5:00 PM,coffee station,12,,,Wibaut office,,training room II,,,"[""external_guests"", ""catering_type"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,11,May 18,client workshop,,lunch,15,,sandwiches and salads,,,Grand Cafe,,reserve a table for the group,"[""event_time"", ""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4o,12,"Tuesday, July 7",strategy meeting,09:00 to 15:00,light breakfast and lunch,18,,,Utrecht office,To be confirmed,room B201,,,"[""external_guests"", ""catering_type"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,13,June 14,coding bootcamp,10:00 to 17:00,snacks and drinks,25,a few from our partner company,,Amsterdam office,,Training Room A,,,"[""catering_type"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,14,"Friday, April 21",leadership team lunch,,lunch,8,,sandwiches and fruit platter,,,Paris room,,coffee and tea,"[""event_time"", ""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4o,15,March 30,networking event,14:00 to 18:00,finger foods and soft drinks,20,Deloitte,,,To be confirmed,Training Room C,,,"[""catering_type"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,16,"Monday, June 14",brainstorming session,,pastries and coffee,To be confirmed,,casual,,,A102,,,"[""event_time"", ""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,17,"Friday, October 23",farewell gathering,,lunch,15,,catered,Hilversum office,vegan,Grand Cafe,,,"[""event_time"", ""external_guests"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,18,"Wednesday, February 10",workshop,full day,light lunch with sandwiches and drinks,To be confirmed,,light lunch and snacks,Wibaut office,,training room,,snacks for the afternoon session,"[""external_guests"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4o,19,March 5,meeting,10:00 AM to 2:00 PM,lunch,12,,,Amsterdam,vegetarian options,B212,,,"[""external_guests"", ""catering_type"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,20,"Tuesday, July 8",,9 AM until 4 PM,"coffee and snacks, simple lunch",16,,,Paris,To be confirmed,Laap location,,,"[""event_type"", ""external_guests"", ""catering_type"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,21,"Thursday, July 15",executive roundtable,8:00 AM,light breakfast,12,,"pastries, coffee, and tea",Amsterdam office,gluten-free options,Paris room,,,"[""external_guests"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,22,"Wednesday, August 10",strategy workshop,2 PM to 5 PM,sandwiches and coffee,15,5,,,,room 3.02,,,"[""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,23,"Monday, September 5",knowledge-sharing session,,lunch,To be confirmed,a few partners,catered,Hilversum office,vegetarian option,,,,"[""event_time"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,24,"Friday, June 25",team-building event,,barbecue lunch,about 25,,,Paris office,,rooftop terrace,projector,,"[""event_time"", ""external_guests"", ""catering_type"", ""dietary_requirements"", ""extra_arrangements""]",
+v1,gpt-4o,25,"Friday, October 22",kick-off meeting,10:00 AM to 3:00 PM,"snacks, coffee, and tea",To be confirmed,,,,,Berlin room,,,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,26,"Thursday, April 13",strategy session,10:00 AM to 4:00 PM,lunch,15,,,,vegetarian options,Amsterdam room,projector,,"[""external_guests"", ""catering_type"", ""office_location"", ""extra_arrangements""]",
+v1,gpt-4o,27,"Monday, March 8",get-together,2:00 to 5:00 PM,coffee and snacks,8,,,,,Grand Café,,,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,28,"Friday, November 15",brainstorming session,9:00 AM,light breakfast,12,Deloitte,,,,Paris room,,,"[""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,29,"Wednesday, August 23",training day,,lunch,18,,,,,B203,,,"[""event_time"", ""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,30,Next Tuesday,visit,1:00 PM to 5:00 PM,coffee and tea service,20,Salesforce,,,To be confirmed,training room A101,,,"[""catering_type"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,31,March 15th,strategy catch-up,10:00 AM to 12:00 PM,light snacks and coffee,8,,,,,Room B211,,,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,32,February 5th,,,lunch,14,3,simple lunch with assorted sandwiches and a vegetarian option,Rotterdam,To be confirmed,,,water and tea available throughout the meeting,"[""event_type"", ""event_time"", ""room_location"", ""av_equipment""]",
+v1,gpt-4o,33,April 22nd,team meeting,8:30 AM,breakfast,10,,pastries and fruit,,,Room 3.02,,,"[""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,34,July 9th,project review session,2 PM to 5 PM,coffee and snacks,15,,,Amsterdam office,To be confirmed,A302,projector,,"[""external_guests"", ""catering_type"", ""extra_arrangements""]",
+v1,gpt-4o,35,August 3rd,workshop,9:00 AM to noon,sandwiches and drinks,6,2,,Hilversum,To be confirmed,,,,"[""catering_type"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,36,"Wednesday, July 22",internal workshop,10:00 AM to 3:00 PM,lunch,18,,salads and sandwiches,Hilversum office,vegan,training room,projector,,"[""external_guests"", ""extra_arrangements""]",
+v1,gpt-4o,37,"Friday, August 7th",partner meeting,11:00 AM to 3:00 PM,Lunch,12,,mix of wraps and fruit platters,Wibaut office,To be confirmed,,,,"[""external_guests"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,38,"Monday, September 14",team-building session,2:00 PM,snacks and drinks,around 25,,,,,Bangalore room,,,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,39,"Thursday, October 15th",client meeting,1:00 PM until 5:00 PM,lunch,15,,catered,Amsterdam,vegetarian options,Paris room,,chairs in a semicircle,"[""external_guests"", ""av_equipment""]",
+v1,gpt-4o,40,"Tuesday, November 3",internal product demo,,lunch,20,,sandwiches,Wibaut office,,Training Room A,projector,,"[""event_time"", ""external_guests"", ""dietary_requirements"", ""extra_arrangements""]",
+v1,gpt-4o,41,October 25,strategy session,14:00 to 18:00,"light refreshments, maybe sandwiches and drinks",18,4,,Laap office,To be confirmed,larger training rooms,,,"[""catering_type"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,42,"Friday, November 7",meeting,10:00 AM to 1:00 PM,lunch,15,3,simple catered lunch,Hilversum office,vegetarian-friendly option,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,43,"Monday, October 20",internal workshop,9:00 AM to 3:00 PM,coffee and tea with snacks,25,,,Wibaut office,To be confirmed,,,,"[""external_guests"", ""catering_type"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,44,October 12,meeting,8:30 to 11:30,breakfast,12,partners from Appian,"selection of pastries, fruits, and juices",Amsterdam office,To be confirmed,Boardroom,,,"[""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,45,"Friday, December 1",team-building event,16:00,dinner,30,,buffet-style,,,Grand Café,To be confirmed,,"[""external_guests"", ""office_location"", ""dietary_requirements"", ""extra_arrangements""]",
+v1,gpt-4o,46,March 14th,small gathering,,lunch,18,,Sandwiches or a small buffet,,To be confirmed,Paris room,,,"[""event_time"", ""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,47,January 22nd,welcoming breakfast,8:30 AM,breakfast,15,,"mix of pastries, fruits, coffee, and juice",Berlin,,Grand Café,projector,,"[""external_guests"", ""dietary_requirements"", ""extra_arrangements""]",
+v1,gpt-4o,48,October 10th,client workshop,,lunch,25,,simple lunch with sandwiches and salads,Hilversum office,To be confirmed,training room,,,"[""event_time"", ""external_guests"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,49,November 3rd,internal team-building session,13:00,light dinner,30,,,Utrecht office,vegetarian preferences,,,,"[""external_guests"", ""catering_type"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o,50,February 5th,meeting,10:00 AM,"coffee, tea, and some snacks",10,,,,To be confirmed,Boardroom,,,"[""external_guests"", ""catering_type"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,1,"Thursday, March 5th",workshop,10:00 AM to 3:00 PM,"light lunch, sandwiches and salads",18,True,coffee and tea,,,Orange Room,,,"[""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,2,"Monday, April 14th",tech talk,1:00 PM,pizzas,25,,,Wibaut office,,To be confirmed,,,"[""external_guests"", ""catering_type"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,3,"Wednesday, July 22",partner event,2:00 PM to 6:00 PM,refreshments and snacks,15,,,,,,yes,post-meeting dinner,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""room_location""]",
+v1,gpt-4o-mini,4,May 8th,strategy session,12:30 PM,lunch,7,,wraps and salads,,gluten-free,Paris Room,,,"[""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,5,June 10th,client engagement session,10:00 AM to 4:00 PM,lunch,20,some visitors from Ericsson,buffet with multiple dietary options,Grand Café,,,,,"[""dietary_requirements"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,6,"Thursday, September 15",leadership workshop,,light lunch,18,To be confirmed,selection of salads and wraps,,To be confirmed,A202,projector,,"[""event_time"", ""office_location"", ""extra_arrangements""]",
+v1,gpt-4o-mini,7,2023-03-10,workshop,09:00 AM,breakfast,25,,simple,Hilversum,,meeting room,,,"[""external_guests"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,8,2023-10-03,strategy session,10:00 to 15:00,lunch,15,,mix of sandwiches and a fruit platter,,To be confirmed,G110,,,"[""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,9,"Thursday, July 7th",roundtable discussion,,refreshments,10,TechAdvantage,,Laap,,Paris,,"coffee, tea, and snacks","[""event_time"", ""catering_type"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4o-mini,10,"Friday, August 20th",internal training session,2:00 PM to 5:00 PM,,12,,coffee station,Wibaut office,,training room II,,,"[""meal_type"", ""external_guests"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,11,May 18,client workshop,,lunch,15,,sandwiches and salads,,,Grand Cafe,,reserve a table for the group,"[""event_time"", ""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4o-mini,12,"Tuesday, July 7",strategy meeting,09:00,light breakfast and lunch with a vegetarian option,18,,,Utrecht,To be confirmed,B201,,,"[""external_guests"", ""catering_type"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,13,June 14,coding bootcamp,10:00 to 17:00,snacks and drinks,25,a few from our partner company,,Amsterdam,,Training Room A,,,"[""catering_type"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,14,"Friday, April 21",lunch,,catered lunch,8,,sandwiches and fruit platter,,,Paris room,,coffee and tea,"[""event_time"", ""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4o-mini,15,March 30,networking,14:00 to 18:00,finger foods and soft drinks,20,Deloitte,,,To be confirmed,Training Room C,,,"[""catering_type"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,16,"Monday, June 14",brainstorming session,,pastries and coffee,8-10,,,,,A102,,To be confirmed,"[""event_time"", ""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4o-mini,17,October 23,farewell gathering,,catered lunch,15,,,Hilversum,vegan options,Grand Cafe,,,"[""event_time"", ""external_guests"", ""catering_type"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,18,2023-02-10,workshop,,light lunch with sandwiches and drinks,18,,snacks for the afternoon session,Wibaut office,,training room,,,"[""event_time"", ""external_guests"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,19,March 5,meeting,10:00 AM to 2:00 PM,lunch with vegetarian options,12,,,Amsterdam,vegetarian,B212,,,"[""external_guests"", ""catering_type"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,20,"Tuesday, July 8",,9 AM until 4 PM,"coffee and snacks, simple lunch",16,,,Paris,To be confirmed,Laap,,,"[""event_type"", ""external_guests"", ""catering_type"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,21,"Thursday, July 15",executive roundtable,8:00 AM,light breakfast,12,,"pastries, coffee, and tea",Amsterdam,gluten-free options,Paris,,,"[""external_guests"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,22,"Wednesday, August 10",strategy workshop,2 PM to 5 PM,sandwiches and coffee,15,5,,,,room 3.02,,,"[""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,23,September 5,knowledge-sharing session,,catered lunch,20,a few partners,Sandwiches and a salad bar with a vegetarian option,Hilversum,vegetarian option,,,final count to be confirmed,"[""event_time"", ""room_location"", ""av_equipment""]",
+v1,gpt-4o-mini,24,"Friday, June 25",team-building,,barbecue lunch,25,some colleagues from our Paris office,,,,rooftop terrace,projector,,"[""event_time"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""extra_arrangements""]",
+v1,gpt-4o-mini,25,"Friday, October 22",kick-off meeting,10:00 AM to 3:00 PM,"snacks, coffee, and tea",,,,,,Berlin room,,,"[""attendee_count"", ""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,26,"Thursday, April 13",strategy session,10:00 AM to 4:00 PM,lunch,15,,vegetarian options,,vegetarian,Amsterdam room,projector,,"[""external_guests"", ""office_location"", ""extra_arrangements""]",
+v1,gpt-4o-mini,27,"Monday, March 8",get-together,2:00 to 5:00 PM,snacks,8,,coffee and snacks,,,Grand Café,,,"[""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,28,November 15,brainstorming session,9:00 AM,light breakfast,12,,,,,Paris room,,,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,29,2023-08-23,training,,To be confirmed,18,,,,,B203,,,"[""event_time"", ""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,30,To be confirmed,Visit,1:00 PM to 5:00 PM,Coffee and tea service,20,Salesforce,,,To be confirmed,A101,,,"[""catering_type"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,31,March 15th,strategy catch-up,10:00 AM to 12:00 PM,light snacks and coffee,8,,,,,Room B211,,To be confirmed,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4o-mini,32,February 5th,,,simple lunch with assorted sandwiches and a vegetarian option,14,3,,Rotterdam,To be confirmed,,,water and tea available throughout the meeting,"[""event_type"", ""event_time"", ""catering_type"", ""room_location"", ""av_equipment""]",
+v1,gpt-4o-mini,33,April 22nd,meeting,8:30 AM,breakfast,10,,pastries and fruit,,,Room 3.02,,,"[""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,34,July 9th,project review session,2 PM to 5 PM,coffee and snacks,15,,,Amsterdam,To be confirmed,A302,projector,,"[""external_guests"", ""catering_type"", ""extra_arrangements""]",
+v1,gpt-4o-mini,35,August 3rd,workshop,9:00 AM to noon,sandwiches and drinks,6,2,,Hilversum,To be confirmed,,,,"[""catering_type"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,36,"Wednesday, July 22",internal workshop,10:00 AM to 3:00 PM,salads and sandwiches,18,,,Hilversum,vegan,To be confirmed,projector,,"[""external_guests"", ""catering_type"", ""extra_arrangements""]",
+v1,gpt-4o-mini,37,"Friday, August 7th",partner meeting,11:00 AM to 3:00 PM,wraps and fruit platters,12,,,Wibaut office,To be confirmed,,,,"[""external_guests"", ""catering_type"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,38,"Monday, September 14",team-building session,2:00 PM,snacks and drinks,25,,,,,Bangalore room,,,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,39,2023-10-15,client meeting,1:00 PM - 5:00 PM,catered lunch with vegetarian options,15,,,Amsterdam,vegetarian options,Paris room,,setup with chairs in a semicircle,"[""external_guests"", ""catering_type"", ""av_equipment""]",
+v1,gpt-4o-mini,40,"Tuesday, November 3",internal product demo,,lunch,20,,light like sandwiches,Wibaut office,,Training Room A,projector,,"[""event_time"", ""external_guests"", ""dietary_requirements"", ""extra_arrangements""]",
+v1,gpt-4o-mini,41,October 25,strategy session,14:00 to 18:00,"light refreshments, sandwiches and drinks",18,4,,Laap office,To be confirmed,larger training rooms,,,"[""catering_type"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,42,November 7,meeting,10:00 AM to 1:00 PM,catered lunch,15,3,sandwiches and salads,Hilversum,vegetarian-friendly,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,43,"Monday, October 20",internal workshop,9:00 AM - 3:00 PM,coffee and tea setup with snacks,25,To be confirmed,,Wibaut office,gluten-free,,,,"[""catering_type"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,44,2023-10-12,meeting,8:30 to 11:30,breakfast,12,1,"pastries, fruits, and juices",Amsterdam,To be confirmed,Boardroom,,,"[""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,45,December 1,team-building,16:00,buffet-style dinner,30,,,Grand Café,,,To be confirmed,,"[""external_guests"", ""catering_type"", ""dietary_requirements"", ""room_location"", ""extra_arrangements""]",
+v1,gpt-4o-mini,46,March 14th,,,lunch,18,,Sandwiches or a small buffet,,To be confirmed,Paris room,,,"[""event_type"", ""event_time"", ""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,47,January 22nd,breakfast,8:30 AM,"mix of pastries, fruits, coffee, and juice",15,,,Berlin,,Grand Café,projector,,"[""external_guests"", ""catering_type"", ""dietary_requirements"", ""extra_arrangements""]",
+v1,gpt-4o-mini,48,2023-10-10,client workshop,,lunch,25,,sandwiches and salads,Hilversum,To be confirmed,training room,,,"[""event_time"", ""external_guests"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,49,November 3rd,internal team-building session,13:00,light dinner,30,,,Utrecht,vegetarian preferences,,,,"[""external_guests"", ""catering_type"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4o-mini,50,February 5th,meeting,10:00 AM,"coffee, tea, and snacks",10,,,,To be confirmed,Boardroom,,,"[""external_guests"", ""catering_type"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,1,2023-03-05,workshop,10:00 AM to 3:00 PM,"light lunch, sandwiches and salads",18,some external guests,,,,Orange Room,,coffee and tea for the morning session,"[""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4.1-nano,2,"Monday, April 14th",tech talk,around 1:00 PM,pizzas or something easy,25,,,Wibaut office,,reserve a suitable room for the entire afternoon,,Let me know what options are available,"[""external_guests"", ""catering_type"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4.1-nano,3,"Wednesday, July 22",partner event,2:00 PM to 6:00 PM,refreshments and snacks,15,,,,,,AV equipment for presentations,post-meeting dinner,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""room_location""]",
+v1,gpt-4.1-nano,4,2023-05-08,strategy session,To be confirmed,lunch,7,,wraps and salads,,gluten-free,Paris Room,,,"[""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,5,June 10th,client engagement session,10:00 AM to 4:00 PM,buffet,20,some visitors from Ericsson,lunch catered,,multiple dietary options,Grand Café,,To be confirmed,"[""office_location"", ""av_equipment""]",
+v1,gpt-4.1-nano,6,"Thursday, September 15",leadership workshop,To be confirmed,light lunch,18,a mix of internal and external stakeholders,salads and wraps,,by Tuesday,A202,projector,To be confirmed,"[""office_location""]",
+v1,gpt-4.1-nano,7,"Thursday, March 10",client workshop,9:00 AM,breakfast,25,,simple,Hilversum office,,meeting room,,,"[""external_guests"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,8,"Monday, October 3rd",strategy session,10:00 to 3:00 PM,lunch,15,,,,To be confirmed,G110 room,,,"[""external_guests"", ""catering_type"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,9,"Thursday, July 7th",roundtable discussion,,"coffee, tea, snacks",10,2,refreshments,Laap office,,Paris room,,prepare the Paris room,"[""event_time"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4.1-nano,10,2023-08-20,internal training session,14:00-17:00,not required,12,,coffee station,Wibaut office,,training room II,,coffee station nearby,"[""external_guests"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4.1-nano,11,May 18,client workshop,,lunch with sandwiches and salads,15,KLM,simple lunch,,,Grand Cafe,,reserve a table for the group,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4.1-nano,12,"Tuesday, July 7",strategy meeting,09:00 to 15:00,"light breakfast, lunch",18,,,Utrecht,To be confirmed,B201,,,"[""external_guests"", ""catering_type"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,13,June 14,coding bootcamp,10:00 to 17:00,snacks and drinks,25,a few from our partner company,,Amsterdam office,,Training Room A,,snacks and drinks,"[""catering_type"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4.1-nano,14,"Friday, April 21",leadership team lunch,,catered lunch,8,,sandwiches and fruit platter,,,Paris room,,coffee and tea,"[""event_time"", ""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4.1-nano,15,March 30,networking event,14:00 to 18:00,finger foods and soft drinks,20,some guests from Deloitte,,,To be confirmed,Training Room C,,,"[""catering_type"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,16,"Monday, June 14",brainstorming session,,pastries and coffee,8-10,,,,,A102,,To be confirmed,"[""event_time"", ""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4.1-nano,17,"Friday, October 23",farewell gathering,To be confirmed,catered lunch,15,,catered,Hilversum office,vegan options,Grand Cafe,,,"[""external_guests"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,18,"Wednesday, February 10",workshop,full day,light lunch with sandwiches and drinks,To be confirmed,,,Wibaut office,snacks for the afternoon session,training room,,some snacks for the afternoon session,"[""external_guests"", ""catering_type"", ""av_equipment""]",
+v1,gpt-4.1-nano,19,2024-03-05,meeting,10:00 AM to 2:00 PM,vegetarian options,12,Appian,,Amsterdam,vegetarian options,B212,,,"[""catering_type"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,20,"Tuesday, July 8",meeting,9 AM until 4 PM,lunch,16,,"coffee, snacks, lunch",Paris,No special dietary requirements,Laap location,,Arrange for coffee and snacks throughout the day,"[""external_guests"", ""av_equipment""]",
+v1,gpt-4.1-nano,21,"Thursday, July 15",executive roundtable,8:00 AM,light breakfast,12,,,Amsterdam,gluten-free options,Paris room,,,"[""external_guests"", ""catering_type"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,22,"Wednesday, August 10",strategy workshop,2 PM to 5 PM,sandwiches and coffee,15,1,,,,room 3.02,,,"[""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,23,"Monday, September 5",knowledge-sharing session,,catered lunch,20,a few partners,sandwiches and a salad bar,Hilversum office,vegetarian option,,,I'll send you the final count by next week,"[""event_time"", ""room_location"", ""av_equipment""]",
+v1,gpt-4.1-nano,24,"Friday, June 25",team-building event,To be confirmed,barbecue lunch,25,some colleagues from our Paris office,barbecue,,,rooftop terrace,projector,weather permitting,"[""office_location"", ""dietary_requirements""]",
+v1,gpt-4.1-nano,25,"Friday, October 22",kick-off meeting,10:00 AM to 3:00 PM,"snacks, coffee, and tea",,a few teammates joining remotely,,Berlin room,,Berlin room,,none,"[""attendee_count"", ""catering_type"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4.1-nano,26,"Thursday, April 13",strategy session,10:00 AM to 4:00 PM,lunch,15,,,Amsterdam,vegetarian options,Amsterdam room,projector,,"[""external_guests"", ""catering_type"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,27,"Monday, March 8",get-together,2:00 to 5:00 PM,coffee and snacks,8,,,,,Grand Café,,,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,28,"Friday, November 15",brainstorming session,9:00 AM,light breakfast,12,Deloitte,,Paris room,,Paris room,,To be confirmed,"[""catering_type"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4.1-nano,29,"Wednesday, August 23",training day,To be confirmed,lunch,18,,,,,room B203,,To be confirmed,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4.1-nano,30,Next Tuesday,visit,1:00 PM to 5:00 PM,coffee and tea service,20,Salesforce,,,To be confirmed,training room A101,,,"[""catering_type"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,31,2023-03-15,strategy catch-up,10:00 AM to 12:00 PM,light snacks and coffee,8,,,,,Room B211,,To be confirmed,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4.1-nano,32,February 5th,meeting,,simple lunch with assorted sandwiches and a vegetarian option,14,3,,Rotterdam,To be confirmed,meeting room,,water and tea available throughout the meeting,"[""event_time"", ""catering_type"", ""av_equipment""]",
+v1,gpt-4.1-nano,33,April 22nd,team meeting,8:30 AM,breakfast,10,,,Grand Café,pastries and fruit,Room 3.02,,until noon,"[""external_guests"", ""catering_type"", ""av_equipment""]",
+v1,gpt-4.1-nano,34,July 9th,project review session,2 PM to 5 PM,coffee and snacks,15,,,Amsterdam office,To be confirmed,A302,projector,To be confirmed,"[""external_guests"", ""catering_type""]",
+v1,gpt-4.1-nano,35,August 3rd,workshop,9:00 AM to noon,sandwiches and drinks,6,2,,Hilversum office,To be confirmed,,,,"[""catering_type"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,36,"Wednesday, July 22",internal workshop,10:00 AM to 3:00 PM,salads and sandwiches,18,,,Hilversum office,vegan,training room,projector,,"[""external_guests"", ""catering_type"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,37,"Friday, August 7th",partner meeting,11:00 AM to 3:00 PM,wraps and fruit platters,12,,,Wibaut office,To be confirmed,,,,"[""external_guests"", ""catering_type"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,38,"Monday, September 14",team-building session,2:00 PM,snacks and drinks,25,,,,,Bangalore room,,To be confirmed,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v1,gpt-4.1-nano,39,2023-10-15,client meeting,13:00-17:00,catered lunch,15,ING,vegetarian options,Amsterdam,vegetarian options,Paris room,,chairs in a semicircle,"[""av_equipment""]",
+v1,gpt-4.1-nano,40,2023-11-03,internal product demo,full day,"lunch, sandwiches",20,,,Wibaut office,light,Training Room A,projector,,"[""external_guests"", ""catering_type"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,41,October 25,strategy session,14:00 to 18:00,"light refreshments, sandwiches and drinks",18,4,,Laap office,To be confirmed,larger training rooms,,,"[""catering_type"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,42,2023-11-07,meeting,10:00 AM to 1:00 PM,catered lunch,15,3,simple sandwiches and salads,Hilversum,vegetarian-friendly,Hilversum office,,,"[""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,43,"Monday, October 20",internal workshop,9:00 AM to 3:00 PM,coffee and tea setup with snacks,25,To be confirmed,,Wibaut office,gluten-free,,,,"[""catering_type"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,44,2023-10-12,meeting,8:30-11:30,catered breakfast,12,partners from Appian,"pastries, fruits, juices",Amsterdam,To be confirmed,Boardroom,,,"[""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,45,"Friday, December 1",team-building event,16:00,buffet-style dinner,30,,,Grand Café,,,potentially,To be confirmed,"[""external_guests"", ""catering_type"", ""dietary_requirements"", ""room_location""]",
+v1,gpt-4.1-nano,46,March 14th,gathering,,lunch,18,,sandwiches or a small buffet,,To be confirmed,Paris room,,,"[""event_time"", ""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,47,January 22nd,visiting,8:30 AM,breakfast,15,,"pastries, fruits, coffee, juice",Berlin,,Grand Café,projector,short presentation,"[""external_guests"", ""dietary_requirements""]",
+v1,gpt-4.1-nano,48,2023-10-10,client workshop,To be confirmed,lunch,25,,simple lunch with sandwiches and salads,Hilversum office,To be confirmed,training room,,,"[""external_guests"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,49,November 3rd,internal team-building session,13:00,light dinner,30,,,Utrecht office,vegetarian preferences,,,,"[""external_guests"", ""catering_type"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v1,gpt-4.1-nano,50,February 5th,meeting,10:00 AM,"coffee, tea, snacks",10,TechSavvy,"coffee, tea, snacks",Boardroom,To be confirmed,Boardroom,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,1,"Thursday, March 5th",workshop,10:00 AM to 3:00 PM,light lunch,18,Yes,sandwiches and salads,,,Orange Room,,coffee and tea for the morning session,"[""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4o,2,"Monday, April 14th",tech talk,starting around 1:00 PM,meal afterwards,25,,pizzas or something easy,Wibaut office,,suitable room for the entire afternoon,,,"[""external_guests"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,3,"Wednesday, July 22",partner event,2:00 PM to 6:00 PM,refreshments and snacks,15,Yes,,,,,AV equipment for presentations,advise on a good spot for a post-meeting dinner,"[""catering_type"", ""office_location"", ""dietary_requirements"", ""room_location""]",
+v2,gpt-4o,4,May 8th,strategy session,12:30 PM,lunch,7,No,wraps and salads,,gluten-free,Paris Room,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,5,June 10th,client engagement session,10:00 AM to 4:00 PM,lunch,20,Yes,buffet,,multiple dietary options,Grand Café,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,6,"Thursday, September 15",leadership workshop,,light lunch,18,mix of internal and external stakeholders,selection of salads and wraps,,To be confirmed,A202,projector,,"[""event_time"", ""office_location"", ""extra_arrangements""]",
+v2,gpt-4o,7,"Thursday, March 10",client workshop,9:00 AM,breakfast,25,Yes,simple breakfast,Hilversum office,,meeting room,,,"[""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,8,"Monday, October 3rd",strategy session,10:00 to 3:00 PM,lunch,15,,sandwiches and a fruit platter,,To be confirmed,G110,,,"[""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,9,"Thursday, July 7th",roundtable discussion,,refreshments,10,Yes,"coffee, tea, and snacks",Laap office,,Paris room,,,"[""event_time"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,10,"Friday, August 20th",internal training session,2:00 PM to 5:00 PM,,12,No,coffee station,Wibaut office,,training room II,,,"[""meal_type"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,11,May 18,client workshop,,lunch,15,Yes,simple lunch with sandwiches and salads,,,Grand Cafe,,reserve a table for the group,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4o,12,"Tuesday, July 7",strategy meeting,09:00 to 15:00,breakfast and lunch,18,,light breakfast and lunch with vegetarian option,Utrecht,To be confirmed,B201,,,"[""external_guests"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,13,June 14,coding bootcamp,10:00 to 17:00,snacks and drinks,25,Yes,,Amsterdam,,Training Room A,,,"[""catering_type"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,14,"Friday, April 21",leadership team lunch,,lunch,8,internal,catered lunch,,,Paris room,,coffee and tea,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4o,15,March 30,networking event,14:00 to 18:00,finger foods and soft drinks,20,Yes,finger foods,,To be confirmed,Training Room C,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,16,"Monday, June 14",brainstorming session,,pastries and coffee,To be confirmed,Yes,casual,,,A102,,,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,17,"Friday, October 23",farewell gathering,,lunch,15,,catered,Hilversum,vegan,Grand Cafe,,,"[""event_time"", ""external_guests"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,18,"Wednesday, February 10",full day workshop,,light lunch with sandwiches and drinks,To be confirmed,Yes,light lunch,Wibaut office,,training room,,snacks for the afternoon session,"[""event_time"", ""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4o,19,March 5,meeting,10:00 AM to 2:00 PM,lunch,12,Yes,,Amsterdam,vegetarian options,B212,,,"[""catering_type"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,20,"Tuesday, July 8",meeting,9 AM until 4 PM,lunch,16,,"coffee and snacks, simple lunch",Laap,To be confirmed,,,,"[""external_guests"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,21,"Thursday, July 15",executive roundtable,8:00 AM,breakfast,12,Yes,light breakfast setup,Amsterdam,gluten-free options,Paris room,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,22,"Wednesday, August 10",strategy workshop,2 PM to 5 PM,sandwiches and coffee,15,Yes,,,,room 3.02,,,"[""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,23,"Monday, September 5",knowledge-sharing session,,lunch,To be confirmed,Yes,Sandwiches and a salad bar,Hilversum,Vegetarian option,,,,"[""event_time"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,24,"Friday, June 25",team-building,,lunch,25,internal Xebia employees,barbecue,,,rooftop terrace,projector,,"[""event_time"", ""office_location"", ""dietary_requirements"", ""extra_arrangements""]",
+v2,gpt-4o,25,"Friday, October 22",kick-off meeting,10:00 AM to 3:00 PM,snacks,To be confirmed,,,,,Berlin room,,,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,26,"Thursday, April 13",strategy session,10:00 AM to 4:00 PM,lunch,15,Yes,,Amsterdam,vegetarian options,Amsterdam room,projector,,"[""catering_type"", ""extra_arrangements""]",
+v2,gpt-4o,27,"Monday, March 8",get-together for new hires,2:00 to 5:00 PM,coffee and snacks,8,,,,,Grand Café,,,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,28,November 15,brainstorming session,9:00 AM,breakfast,12,Yes,light,Paris,,Paris room,,,"[""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,29,"Wednesday, August 23",training day,,lunch,18,internal,To be confirmed,,,room B203,,,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,30,Next Tuesday,"visit from partner, Salesforce",1:00 PM to 5:00 PM,coffee and tea service,20,Yes,,,To be confirmed,training room A101,,,"[""catering_type"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,31,March 15th,strategy catch-up,10:00 AM to 12:00 PM,light snacks and coffee,8,No,,,,Room B211,,,"[""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,32,February 5th,potential partner visit,,lunch,14,Yes,simple lunch with assorted sandwiches and a vegetarian option,Rotterdam,To be confirmed,suitable meeting room,,water and tea available throughout the meeting,"[""event_time"", ""av_equipment""]",
+v2,gpt-4o,33,April 22nd,team meeting,8:30 AM to noon,breakfast,10,,pastries and fruit,,,Room 3.02,,,"[""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,34,July 9th,project review session,2 PM to 5 PM,coffee and snacks,15,,,Amsterdam,To be confirmed,A302,projector,,"[""external_guests"", ""catering_type"", ""extra_arrangements""]",
+v2,gpt-4o,35,August 3rd,workshop,9:00 AM to noon,sandwiches and drinks,8,Yes,,Hilversum,To be confirmed,any available space,,,"[""catering_type"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,36,"Wednesday, July 22",internal workshop,10:00 AM to 3:00 PM,lunch,18,No,salads and sandwiches,Hilversum office,vegan,training room,projector,,"[""extra_arrangements""]",
+v2,gpt-4o,37,"Friday, August 7th",partner meeting with AWS,11:00 AM to 3:00 PM,Lunch,12,Yes,mix of wraps and fruit platters,Wibaut office,To be confirmed,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,38,"Monday, September 14",team-building session,2:00 PM,snacks and drinks,around 25,,,,,Bangalore room,,,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,39,"Thursday, October 15th",client meeting,1:00 PM until 5:00 PM,lunch,15,Yes,catered,Amsterdam,vegetarian options,Paris room,,chairs in a semicircle,"[""av_equipment""]",
+v2,gpt-4o,40,"Tuesday, November 3",internal product demo,full day,lunch,20,No,sandwiches,Wibaut office,,Training Room A,projector,,"[""dietary_requirements"", ""extra_arrangements""]",
+v2,gpt-4o,41,October 25,strategy session,14:00 to 18:00,light refreshments,18,Yes,sandwiches and drinks,Laap office,To be confirmed,larger training room,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,42,"Friday, November 7",meeting with a client,10:00 AM to 1:00 PM,lunch,15,Yes,simple catered lunch,Hilversum office,vegetarian-friendly option,meeting room,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,43,"Monday, October 20",internal workshop focusing on Agile practices,9:00 AM to 3:00 PM,,about 25,internal,coffee and tea setup with snacks,Wibaut office,To be confirmed,,,,"[""meal_type"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,44,October 12,meeting,8:30 to 11:30,breakfast,12,Yes,catered,Amsterdam,To be confirmed,Boardroom,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,45,"Friday, December 1",team-building event,16:00 to 18:30,dinner,30,,buffet-style,Grand Café,,,To be confirmed,,"[""external_guests"", ""dietary_requirements"", ""room_location"", ""extra_arrangements""]",
+v2,gpt-4o,46,March 14th,small gathering with DevOps partners,,lunch,18,Yes,Sandwiches or a small buffet,,To be confirmed,Paris room,,,"[""event_time"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,47,January 22nd,welcoming breakfast,8:30 AM,breakfast,15,Yes,"mix of pastries, fruits, coffee, and juice",Berlin,,Grand Café,projector,,"[""dietary_requirements"", ""extra_arrangements""]",
+v2,gpt-4o,48,October 10th,client workshop,,lunch,25,Yes,simple lunch with sandwiches and salads,Hilversum,To be confirmed,training room,,,"[""event_time"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,49,November 3rd,internal team-building session,13:00 to evening,dinner,30,No,light dinner,Utrecht,vegetarian preferences,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o,50,February 5th,"meeting with our new partner, TechSavvy",10:00 AM,snacks,10,Yes,"coffee, tea, and snacks",,To be confirmed,Boardroom,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,1,2024-03-05,workshop,10:00 AM to 3:00 PM,light lunch,18,yes,sandwiches and salads,,,Orange Room,,coffee and tea for the morning session,"[""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4o-mini,2,2024-04-14,tech talk,1:00 PM,pizzas,25,,To be confirmed,Wibaut,,,,,"[""external_guests"", ""dietary_requirements"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,3,"Wednesday, July 22",partner event,2:00 PM to 6:00 PM,refreshments and snacks,15,yes,,,,,AV equipment for presentations,post-meeting dinner,"[""catering_type"", ""office_location"", ""dietary_requirements"", ""room_location""]",
+v2,gpt-4o-mini,4,2023-05-08,strategy session,12:30 PM,lunch,7,,wraps and salads,,gluten-free,Paris Room,,,"[""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,5,June 10th,client engagement session,10:00 AM to 4:00 PM,lunch,20,yes,buffet with multiple dietary options,,,Grand Café,,,"[""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,6,2023-09-15,leadership workshop,,light lunch,18,yes,selection of salads and wraps,,To be confirmed,A202,projector,,"[""event_time"", ""office_location"", ""extra_arrangements""]",
+v2,gpt-4o-mini,7,2023-03-10,workshop,9:00 AM,breakfast,25,yes,simple breakfast,Hilversum,,meeting room,,,"[""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,8,2023-10-03,strategy session,10:00 to 3:00 PM,lunch,15,,sandwiches and fruit platter,,gluten-free request,G110,,,"[""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,9,2023-07-07,roundtable discussion,,refreshments,10,yes,snacks and beverages,Laap,,Paris room,,"refreshments like coffee, tea, and snacks","[""event_time"", ""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4o-mini,10,2023-08-20,internal training session,2:00 PM to 5:00 PM,,12,internal,,Wibaut,,training room II,,coffee station,"[""meal_type"", ""catering_type"", ""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4o-mini,11,May 18,client workshop,,lunch,15,yes,sandwiches and salads,,,Grand Cafe,,reserve a table for the group,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4o-mini,12,"Tuesday, July 7",strategy meeting,09:00 - 15:00,light breakfast and lunch,18,,vegetarian option,Utrecht,To be confirmed,B201,,,"[""external_guests"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,13,June 14,coding bootcamp,10:00 to 17:00,snacks and drinks,25,yes,,Amsterdam,,Training Room A,,snacks and drinks,"[""catering_type"", ""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4o-mini,14,2023-04-21,leadership team lunch,,lunch,8,internal,sandwiches and fruit platter,Paris,,Paris room,,coffee and tea,"[""event_time"", ""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4o-mini,15,March 30,networking event,14:00 to 18:00,finger foods,20,yes,soft drinks,,To be confirmed,Training Room C,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,16,2023-06-14,brainstorming session,,pastries and coffee,8-10,yes,light catering,,,A102,,,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,17,2023-10-23,farewell gathering,,lunch,15,,catered,Hilversum,vegan options,Grand Cafe,,,"[""event_time"", ""external_guests"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,18,2023-02-10,workshop,,light lunch,18,yes,sandwiches and drinks,Wibaut,,training room,,snacks for the afternoon session,"[""event_time"", ""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4o-mini,19,2024-03-05,meeting,10:00 AM to 2:00 PM,lunch,12,yes,vegetarian,Amsterdam,vegetarian options,B212,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,20,2024-07-08,,9 AM until 4 PM,simple lunch,16,yes,coffee and snacks,Laap,To be confirmed,,,,"[""event_type"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,21,2023-07-15,executive roundtable,8:00 AM,light breakfast,12,To be confirmed,"pastries, coffee, and tea",Amsterdam,gluten-free options,Paris room,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,22,2023-08-10,strategy workshop,2 PM to 5 PM,sandwiches and coffee,15,yes,To be confirmed,To be confirmed,,room 3.02,,,"[""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,23,2023-09-05,knowledge-sharing session,,lunch,20,yes,sandwiches and salad bar,Hilversum,vegetarian option,,,final count to be confirmed,"[""event_time"", ""room_location"", ""av_equipment""]",
+v2,gpt-4o-mini,24,2023-06-25,team-building,,lunch,25,yes,barbecue,,,rooftop terrace,projector,,"[""event_time"", ""office_location"", ""dietary_requirements"", ""extra_arrangements""]",
+v2,gpt-4o-mini,25,2023-10-22,kick-off meeting,10:00 AM to 3:00 PM,"snacks, coffee, and tea",,,,,,Berlin room,,,"[""attendee_count"", ""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,26,2023-04-13,strategy session,10:00 AM to 4:00 PM,lunch,15,yes,To be confirmed,Amsterdam,vegetarian options,Amsterdam room,projector,,"[""extra_arrangements""]",
+v2,gpt-4o-mini,27,2023-03-08,get-together,2:00 PM to 5:00 PM,snacks,8,,coffee and snacks,,,Grand Café,,,"[""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,28,2023-11-15,brainstorming session,9:00 AM,light breakfast,12,yes,To be confirmed,Paris,,Paris room,,,"[""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,29,2023-08-23,training day,,lunch,18,internal,,,,B203,,,"[""event_time"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,30,To be confirmed,Visit from partner,1:00 PM to 5:00 PM,Coffee and tea service,20,Yes,,,To be confirmed,Training room A101,,,"[""catering_type"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,31,March 15th,strategy catch-up,10:00 AM to 12:00 PM,light snacks and coffee,8,internal,To be confirmed,,,Room B211,,,"[""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,32,February 5th,meeting,,lunch,14,yes,simple lunch with assorted sandwiches and a vegetarian option,Rotterdam,To be confirmed,To be confirmed,,water and tea available throughout the meeting,"[""event_time"", ""av_equipment""]",
+v2,gpt-4o-mini,33,April 22nd,team meeting,8:30 AM to noon,breakfast,10,,pastries and fruit,,,Room 3.02,,,"[""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,34,July 9th,project review session,2 PM to 5 PM,coffee and snacks,15,,,Amsterdam,To be confirmed,A302,projector,,"[""external_guests"", ""catering_type"", ""extra_arrangements""]",
+v2,gpt-4o-mini,35,August 3rd,workshop,9:00 AM to noon,sandwiches and drinks,8,yes,To be confirmed,Hilversum,To be confirmed,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,36,"Wednesday, July 22",workshop,10:00 AM to 3:00 PM,lunch,18,internal,salads and sandwiches,Hilversum,vegan,To be confirmed,projector,,"[""extra_arrangements""]",
+v2,gpt-4o-mini,37,2023-08-07,partner meeting,11:00 AM to 3:00 PM,lunch,12,yes,mix of wraps and fruit platters,Wibaut office,To be confirmed,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,38,September 14,team-building session,2:00 PM,snacks and drinks,25,,,Bangalore,,Bangalore room,,,"[""external_guests"", ""catering_type"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,39,2023-10-15,client meeting,1:00 PM until 5:00 PM,lunch,15,yes,catered lunch with vegetarian options,Amsterdam,vegetarian options,Paris room,,setup with chairs in a semicircle,"[""av_equipment""]",
+v2,gpt-4o-mini,40,2023-11-03,product demo,,lunch,20,internal,sandwiches,Wibaut,,Training Room A,projector,,"[""event_time"", ""dietary_requirements"", ""extra_arrangements""]",
+v2,gpt-4o-mini,41,2023-10-25,strategy session,14:00 to 18:00,light refreshments,18,yes,sandwiches and drinks,Laap,To be confirmed,larger training room,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,42,2023-11-07,meeting,10:00 AM to 1:00 PM,lunch,15,yes,simple catered lunch,Hilversum,vegetarian-friendly option,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,43,"Monday, October 20",workshop,9:00 AM - 3:00 PM,snacks,25,To be confirmed,coffee and tea setup with snacks,Wibaut office,gluten-free,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,44,2023-10-12,meeting,8:30 to 11:30,breakfast,12,yes,"pastries, fruits, and juices",Amsterdam,To be confirmed,Boardroom,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,45,2023-12-01,team-building,16:00 - 18:30,dinner,30,,buffet,Grand Café,,,To be confirmed,,"[""external_guests"", ""dietary_requirements"", ""room_location"", ""extra_arrangements""]",
+v2,gpt-4o-mini,46,March 14th,gathering,,lunch,18,yes,sandwiches or small buffet,,To be confirmed,Paris room,,,"[""event_time"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,47,January 22nd,welcoming breakfast,8:30 AM,breakfast,15,yes,"mix of pastries, fruits, coffee, and juice",Grand Café,,,projector,,"[""dietary_requirements"", ""room_location"", ""extra_arrangements""]",
+v2,gpt-4o-mini,48,2023-10-10,client workshop,,lunch,25,yes,sandwiches and salads,Hilversum,To be confirmed,training room,,,"[""event_time"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,49,November 3rd,team-building session,13:00 - To be confirmed,light dinner,30,internal,To be confirmed,Utrecht,vegetarian preferences,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4o-mini,50,February 5th,meeting,10:00 AM,snacks,10,yes,coffee and tea,,To be confirmed,Boardroom,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,1,2024-03-05,workshop for potential clients,10:00 AM to 3:00 PM,"light lunch, sandwiches and salads",18,some external guests,lunch and beverages,,,Orange Room,,coffee and tea for the morning session,"[""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4.1-nano,2,"Monday, April 14th",tech talk,around 1:00 PM for the entire afternoon,pizzas or something easy,25,No,meal,Wibaut office,,,,,"[""dietary_requirements"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,3,"Wednesday, July 22",partner event,2:00 PM to 6:00 PM,refreshments and snacks,15,Yes,snacks,,,,AV equipment for presentations,post-meeting dinner,"[""office_location"", ""dietary_requirements"", ""room_location""]",
+v2,gpt-4.1-nano,4,2023-05-08,strategy session,12:30 PM,lunch,7,False,wraps and salads,Paris Office,gluten-free,Paris Room,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,5,June 10th,client engagement session,10:00 AM to 4:00 PM,"lunch catered, buffet with multiple dietary options",20,some visitors from Ericsson,buffet,,multiple dietary options,Grand Café,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,6,"Thursday, September 15",leadership workshop,around 12:30,"light lunch, salads and wraps",18,mix of internal and external stakeholders,light lunch,,To be confirmed,A202,projector,,"[""office_location"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,7,"Thursday, March 10",client workshop,9:00 AM,pastries and coffee,25,Yes,simple breakfast,Hilversum office,,meeting room,,,"[""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,8,"Monday, October 3rd",strategy session,10:00 to 3:00 PM,lunch,15,,sandwiches and fruit platter,,gluten-free request possible,G110 room,,,"[""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,9,"Thursday, July 7th",roundtable discussion,,"coffee, tea, snacks",10,True,refreshments,Laap office,,Paris room,,,"[""event_time"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,10,2023-08-20,internal training session,14:00-17:00,,12,False,,Wibaut office,,training room II,,set up a coffee station nearby,"[""meal_type"", ""catering_type"", ""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4.1-nano,11,May 18,client workshop,,lunch with sandwiches and salads,15,client (KLM),simple lunch,,,Grand Cafe,,reserve a table for the group,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4.1-nano,12,"Tuesday, July 7",strategy meeting,09:00 to 15:00,"light breakfast, lunch",18,No,breakfast and lunch,Utrecht,To be confirmed,B201,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,13,June 14,coding bootcamp,10:00 to 17:00,snacks and drinks,25,a few from our partner company,snacks and drinks,Amsterdam,,Training Room A,,,"[""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,14,"Friday, April 21",leadership team lunch,,sandwiches and fruit platter,8,No,catered lunch,Paris office,,Paris room,coffee and tea,none,"[""event_time"", ""dietary_requirements""]",
+v2,gpt-4.1-nano,15,March 30,networking event,14:00 to 18:00,finger foods and soft drinks,20,True,finger foods and soft drinks,,To be confirmed,Training Room C,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,16,"Monday, June 14",brainstorming session,,pastries and coffee,8-10,,pastries and coffee,,,A102,,,"[""event_time"", ""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,17,2023-10-23,farewell gathering,To be confirmed,lunch,15,internal only,catered,Hilversum,vegan options,Grand Cafe,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,18,"Wednesday, February 10",full day workshop,To be confirmed,light lunch with sandwiches and drinks,18,Yes,lunch and snacks,Wibaut office,,training room,,some snacks for the afternoon session,"[""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4.1-nano,19,2024-03-05,meeting,10:00 AM to 2:00 PM,vegetarian lunch,12,True,lunch,Amsterdam,vegetarian options,B212,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,20,2023-07-08,meeting,09:00-16:00,lunch,16,Yes,"coffee, snacks, lunch",Paris office,None specified,Laap location,,coffee and snacks throughout the day,"[""av_equipment""]",
+v2,gpt-4.1-nano,21,"Thursday, July 15",executive roundtable,8:00 AM,"light breakfast (pastries, coffee, tea)",12,Yes,breakfast,Amsterdam,gluten-free options,Paris room,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,22,"Wednesday, August 10",strategy workshop,2 PM to 5 PM,sandwiches and coffee,15,client Shell and 5 colleagues,sandwiches and coffee,,,room 3.02,,,"[""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,23,"Monday, September 5",knowledge-sharing session,,lunch,20,True,catered lunch,Hilversum,vegetarian option,,,,"[""event_time"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,24,"Friday, June 25",team-building event,,barbecue lunch,25,some colleagues from our Paris office,barbecue,,,rooftop terrace,projector,,"[""event_time"", ""office_location"", ""dietary_requirements"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,25,2023-10-22,kick-off meeting,10:00 AM to 3:00 PM,"snacks, coffee, and tea",To be confirmed,Yes,light refreshments,,,Berlin room,,,"[""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,26,"Thursday, April 13",strategy session,10:00 AM to 4:00 PM,lunch,15,True,vegetarian options,,vegetarian options,Amsterdam room,projector,,"[""office_location"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,27,"Monday, March 8",get-together for new hires,2:00 to 5:00 PM,coffee and snacks,8,,coffee and snacks,,,Grand Café,,,"[""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,28,"Friday, November 15",brainstorming session,9:00 AM,light breakfast,12,Deloitte,breakfast,,,Paris room,,,"[""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,29,"Wednesday, August 23",training day,To be confirmed,lunch,18,False,lunch,,,room B203,,To be confirmed,"[""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4.1-nano,30,Next Tuesday,afternoon session,1:00 PM to 5:00 PM,coffee and tea,20,Salesforce,coffee and tea service,,To be confirmed,training room A101,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,31,March 15th,strategy catch-up,10:00 AM to 12:00 PM,light snacks and coffee,8,False,snacks and beverages,,,Room B211,,Check room availability in the booking system,"[""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v2,gpt-4.1-nano,32,February 5th,potential partner visit,,simple lunch with assorted sandwiches and a vegetarian option,14,True,lunch,Rotterdam,To be confirmed,meeting room,,water and tea available throughout the meeting,"[""event_time"", ""av_equipment""]",
+v2,gpt-4.1-nano,33,April 22nd,small team meeting,8:30 AM to noon,breakfast with pastries and fruit,10,No,breakfast,Grand Café,,Room 3.02,,,"[""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,34,July 9th,project review session,2 PM to 5 PM,coffee and snacks,15,,coffee and snacks,Amsterdam,To be confirmed,A302,projector,,"[""external_guests"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,35,August 3rd,workshop,9:00 AM to noon,sandwiches and drinks,6,True,snacks and beverages,Hilversum,To be confirmed,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,36,"Wednesday, July 22",internal workshop,10:00 AM to 3:00 PM,lunch (salads and sandwiches),18,False,salads and sandwiches,Hilversum office,vegan,training room,projector,,"[""extra_arrangements""]",
+v2,gpt-4.1-nano,37,"Friday, August 7th",partner meeting with AWS,11:00 AM to 3:00 PM,wraps and fruit platters,12,Yes,lunch,Wibaut office,To be confirmed,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,38,"Monday, September 14",team-building session,start at 2:00 PM,snacks and drinks,25,No,snacks and drinks,Bangalore,,Bangalore room,,,"[""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,39,"Thursday, October 15th",client meeting,1:00 PM until 5:00 PM,catered lunch including some vegetarian options,15,external,lunch,Amsterdam,vegetarian options,Paris room,,chairs in a semicircle for the discussion,"[""av_equipment""]",
+v2,gpt-4.1-nano,40,2023-11-03,internal product demo,full day,"lunch, sandwiches",20,False,light meal,Wibaut office,,Training Room A,projector,,"[""dietary_requirements"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,41,October 25,strategy session,14:00 to 18:00,"light refreshments, sandwiches and drinks",18,True,light refreshments,Laap office,To be confirmed,larger training rooms,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,42,"Friday, November 7",meeting with a client,10:00 AM to 1:00 PM,lunch,15,True,simple catered lunch,Hilversum office,vegetarian-friendly option,meeting room,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,43,"Monday, October 20",internal workshop focusing on Agile practices,from 9:00 AM to 3:00 PM,coffee and tea setup with snacks,25,"Potential external guests (gluten-free), to be confirmed",coffee and tea setup with snacks,Wibaut office,"gluten-free (potential guests), to be confirmed",suitable room for about 25 people,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,44,2023-10-12,meeting,8:30 to 11:30,"pastries, fruits, and juices",12,Yes,breakfast,Amsterdam,To be confirmed,Boardroom,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,45,2023-12-01,team-building event,16:00-18:30,buffet-style dinner,30,,buffet,,,Grand Café,AV equipment for presentations,Space for about 30 people,"[""external_guests"", ""office_location"", ""dietary_requirements""]",
+v2,gpt-4.1-nano,46,March 14th,small gathering with DevOps partners,,lunch,18,external guests (DevOps partners),sandwiches or small buffet,,To be confirmed,Paris room,,,"[""event_time"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,47,January 22nd,Welcoming breakfast,8:30 AM,"Pastries, fruits, coffee, juice",15,Yes,Breakfast,,,Grand Café,Projector,Feasibility confirmation,"[""office_location"", ""dietary_requirements""]",
+v2,gpt-4.1-nano,48,2023-10-10,client workshop,To be confirmed,lunch with sandwiches and salads,25,Yes,simple lunch,Hilversum,To be confirmed,training room,,,"[""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,49,November 3rd,internal team-building session,13:00 and into the evening,light dinner,30,False,dinner,Utrecht office,vegetarian preferences,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v2,gpt-4.1-nano,50,February 5th,meeting,10:00 AM,"coffee, tea, snacks",10,True,snacks,,To be confirmed,Boardroom,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o,1,"Thursday, March 5th",Workshop for potential clients,10:00 AM to 3:00 PM,Lunch,18,Potential clients,Light lunch with sandwiches and salads,,,Orange Room,,Coffee and tea for the morning session,"[""office_location"", ""dietary_requirements"", ""av_equipment""]","Subject: Additional Information Needed for Workshop Request
+
+Hello [Name],
+
+Thank you for your request regarding the workshop on March 5th. We’re excited to assist with your event!
+
+To ensure everything is arranged smoothly, could you kindly provide a bit more information on the following:
+
+1. Office location where the workshop will be held.
+2. Any dietary requirements or preferences for the lunch options.
+3. Any specific AV equipment needed for the workshop.
+
+Once we have these details, we can proceed with finalizing the arrangements. 
+
+Looking forward to your reply!
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Back-Office Team"
+v3,gpt-4o,2,"Monday, April 14th",Tech Talk,"Starting around 1:00 PM, entire afternoon",Meal afterwards,25,,Pizzas or something easy,Wibaut office,,To be confirmed,,,"[""external_guests"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-up on Tech Talk Arrangements
+
+Hi [Name],
+
+Thank you for reaching out regarding the tech talk on April 14th. I’d be happy to assist with the arrangements.
+
+To ensure everything goes smoothly, could you please provide a bit more information on the following:
+
+1. Will there be any external guests attending?
+2. Are there any dietary requirements or preferences we should be aware of for the meal?
+3. Do you require any specific AV equipment for the talk?
+4. Are there any additional arrangements or special requests we should consider?
+
+Once I have these details, I'll check on the room availability and meal options. 
+
+Looking forward to your response!
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,3,"Wednesday, July 22",Partner event with SAP,2:00 PM to 6:00 PM,Refreshments and snacks,15,Stakeholders from SAP,Refreshments and snacks,,,,AV equipment for presentations,Advice on a good spot for a post-meeting dinner,"[""office_location"", ""dietary_requirements"", ""room_location""]","Subject: Follow-Up on Partner Event Details
+
+Good morning,
+
+Thank you for reaching out with the details of the upcoming partner event. It sounds like an important meeting, and we're keen to ensure everything runs smoothly.
+
+To proceed with the arrangements, could you please provide the following information:
+- The office location where you would like to host the event
+- Any specific dietary requirements for the refreshments and snacks
+- Your preference for the room location within the office
+
+Once we have these details, we can finalize the arrangements promptly.
+
+Looking forward to your reply.
+
+Best regards,
+
+[Your Name]"
+v3,gpt-4o,4,"Friday, May 8th",Strategy session,,Lunch,7,No,Simple lunch with wraps and salads,,Gluten-free,Paris Room,,,"[""event_time"", ""office_location"", ""av_equipment"", ""extra_arrangements""]","Subject: Additional Details Needed for Your Strategy Session Request
+
+Hi [Name],
+
+Thank you for reaching out and considering the Paris Room for your strategy session this Friday, May 8th. We’re happy to assist you in arranging the space and lunch for your team.
+
+To ensure everything is perfectly set up for your session, could you please provide the following details:
+
+- What time will the strategy session begin and end?
+- Which office location should the arrangements be made for?
+- Will you require any AV equipment for your meeting?
+- Are there any additional arrangements or specific needs we should be aware of?
+
+Once we have this information, we can proceed with confirming the availability and making the necessary arrangements.
+
+Thanks again for your prompt attention to these details, and please let us know if there's anything else we can do to assist.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Back-Office Team"
+v3,gpt-4o,5,June 10th,Client engagement session,10:00 AM to 4:00 PM,Lunch,20,Visitors from Ericsson,Buffet with multiple dietary options,,Multiple dietary options,Grand Café,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]","Subject: Additional Details for Client Engagement Session on June 10th
+
+Hi [Name],
+
+Thank you for reaching out and providing the initial details for the client engagement session on June 10th. Hosting it at the Grand Café sounds like a great idea!
+
+To ensure everything is arranged perfectly, could you please provide the following additional information:
+- The office location where the event will take place.
+- Any AV equipment requirements you might have for the session.
+- Any extra arrangements or specific requests you would like us to consider.
+
+Once I have this information, I'll be able to proceed with the reservations and arrangements.
+
+Looking forward to your reply.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Back-Office Team"
+v3,gpt-4o,6,"Thursday, September 15",Leadership workshop,,Lunch,18,Mix of internal and external stakeholders,Light lunch with selection of salads and wraps,,To be confirmed,A202,Projector,,"[""event_time"", ""office_location"", ""extra_arrangements""]","Subject: Follow-Up on Leadership Workshop Details
+
+Good morning,
+
+Thank you for reaching out with the details of your upcoming leadership workshop. We’re excited to assist in making this event a success.
+
+To ensure everything is perfectly arranged, could you please provide the following additional information:
+- The start and end time of the event
+- The specific office location for the A202 room reservation
+- Any additional arrangements or equipment you might need
+
+Once we have these details, we’ll proceed with the necessary preparations.
+
+Looking forward to your response.
+
+Best regards,
+
+[Your Name]  
+Hospitality Back-Office Team  
+Xebia"
+v3,gpt-4o,7,"Thursday, March 10",Client workshop,9:00 AM,Breakfast,25,Client,Simple breakfast with pastries and coffee,Hilversum office,,Meeting room,,,"[""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-Up on Client Workshop Arrangements
+
+Hi [Name],
+
+Thank you for reaching out regarding the client workshop on March 10 at our Hilversum office. We're happy to assist with organizing the breakfast.
+
+To ensure everything goes smoothly, could you please provide the following details at your earliest convenience?
+- Any dietary requirements for the participants
+- AV equipment needs for the meeting room
+- Any additional arrangements or special requests
+
+Once we have this information, we'll proceed with the arrangements to ensure a successful event.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,8,"Monday, October 3rd",Strategy session,10:00 to 3:00 PM,Lunch,15,,Mix of sandwiches and a fruit platter,,"To be confirmed, possible gluten-free request",G110,,,"[""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]","Subject: Additional Information Needed for Strategy Session
+
+Hello [Name],
+
+Thank you for your request regarding the lunch arrangements for your strategy session on Monday, October 3rd. To ensure everything is set up perfectly, could you please provide a bit more information?
+
+1. Are there any external guests attending the session?
+2. Could you confirm the office location?
+3. Will you require any AV equipment for the session?
+4. Are there any extra arrangements or special requirements we should be aware of?
+
+Once I have this information, I'll be able to proceed with your request smoothly. If there's anything else you need or if dietary preferences change, please feel free to reach out.
+
+Thank you!
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,9,"Thursday, July 7th",Roundtable discussion,,,10,"A few from our partner, TechAdvantage","Refreshments with coffee, tea, and snacks",Laap office,,Paris room,,,"[""event_time"", ""meal_type"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-Up on Roundtable Discussion Details
+
+Hi [Name],
+
+Thank you for reaching out about the roundtable discussion on Thursday, July 7th. I'd be happy to assist with the arrangements. Could you please provide a bit more information to ensure everything runs smoothly?
+
+- What time is the event scheduled to start and end?
+- Are there any specific meal preferences or dietary requirements we should be aware of?
+- Will you need any AV equipment for the discussion?
+- Are there any additional arrangements or special requests we should consider?
+
+Looking forward to your response, and I'll make sure everything is prepared accordingly.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Back-Office Team"
+v3,gpt-4o,10,"Friday, August 20th",Internal training session,2:00 PM to 5:00 PM,,12,No,Coffee station,Wibaut office,,Training room II,,,"[""meal_type"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]","Subject: Additional Details Needed for Training Session on August 20th
+
+Hi [Name],
+
+Thank you for reaching out with the request for the training session on August 20th. I'm happy to assist with the arrangements.
+
+To ensure we meet all your needs, could you please provide the following information:
+- Meal type required, if any
+- Any dietary requirements for the attendees
+- AV equipment needed for the session
+- Any extra arrangements or specific requests
+
+Once I have these details, I'll proceed with the booking and setup. 
+
+Looking forward to your response.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,11,May 18,Client Workshop with KLM,,Lunch,15,KLM,Simple lunch with sandwiches and salads,,,Grand Cafe,,Reserve a table for the group,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment""]","Subject: Additional Details Needed for KLM Workshop Lunch
+
+Hi [Name],
+
+Thank you for the information regarding the KLM client workshop on May 18. To ensure everything is arranged perfectly, could you please provide a few additional details?
+
+- What time is the workshop scheduled to start?
+- Which office location will the workshop be held at?
+- Are there any specific dietary requirements we should be aware of for the lunch?
+- Will you need any AV equipment for the event?
+
+Once I have these details, I'll proceed with arranging the lunch and reserving the table at the Grand Cafe.
+
+Thank you!
+
+Best regards,
+
+[Your Name]"
+v3,gpt-4o,12,"Tuesday, July 7",Strategy meeting,09:00 to 15:00,Breakfast and Lunch,18,,Light breakfast and lunch with vegetarian option,Utrecht,To be confirmed,B201,,,"[""external_guests"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-up on Strategy Meeting Arrangements
+
+Hi [Name],
+
+Thank you for the details regarding the strategy meeting scheduled for July 7 in room B201. We're looking forward to assisting with the event.
+
+To ensure everything is perfectly arranged, could you please confirm if there will be any external guests joining us? Additionally, let us know if you'll require any AV equipment or if there are any extra arrangements you'd like us to make.
+
+Feel free to share any dietary preferences whenever you're ready. We're here to help make the meeting a success!
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,13,June 14,Coding Bootcamp,10:00 to 17:00,,25,A few from our partner company,Snacks and drinks,Amsterdam office,,Training Room A,,,"[""meal_type"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-Up on Your Coding Bootcamp Request
+
+Hi [Name],
+
+Thank you for reaching out about the coding bootcamp on June 14 at the Amsterdam office. We're excited to help make this event a success!
+
+To ensure everything goes smoothly, could you please provide a bit more information on the following:
+
+- Meal type: Would you like a specific type of snacks and drinks, such as healthy options, pastries, or a mix?
+- Dietary requirements: Are there any specific dietary needs we should be aware of for the attendees?
+- AV equipment: Will you require any audiovisual equipment for the bootcamp, such as projectors, microphones, or speakers?
+- Extra arrangements: Is there anything else you might need for the event, like seating arrangements or additional materials?
+
+Once we have these details, we can proceed with the arrangements. Looking forward to your reply!
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,14,"Friday, April 21",Leadership team lunch,,Lunch,8,No,Catered lunch with sandwiches and fruit platter,,,Paris room,,Coffee and tea available,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment""]","Subject: Follow-Up on Leadership Team Lunch Details
+
+Hi [Name],
+
+Thank you for reaching out to us regarding the leadership team lunch on April 21 in the Paris room. We’re happy to assist in arranging the catered lunch.
+
+Could you please provide the following details to help us ensure everything is perfectly organized?
+
+- What time will the lunch be held?
+- Which office location should we coordinate with?
+- Are there any specific dietary requirements or preferences we should be aware of?
+- Will you require any AV equipment for this meeting?
+
+Once we have these details, we can proceed with the arrangements.
+
+Looking forward to your response.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,15,March 30,Networking event,14:00 to 18:00,,20,Guests from Deloitte,Selection of finger foods and soft drinks,,To be confirmed,Training Room C,,,"[""meal_type"", ""office_location"", ""av_equipment"", ""extra_arrangements""]","Subject: Additional Details Needed for Networking Event on March 30
+
+Good afternoon,
+
+Thank you for your request to organize the networking event on March 30. To ensure we meet all your needs, could you please provide the following additional details:
+
+- Meal type: Are there specific types of finger foods or any particular preferences?
+- Office location: Which office will the event be held in?
+- AV equipment: Will you require any audiovisual equipment for the event?
+- Extra arrangements: Are there any other specific arrangements or setups you would like us to consider?
+
+Once we have this information, we can proceed with the arrangements. Looking forward to your reply, and please feel free to reach out with any further details.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Back-office Team"
+v3,gpt-4o,16,"Monday, June 14",Brainstorming session with strategic partners,,Pastries and coffee,To be confirmed,Strategic partners,Casual,,,A102,,,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-Up on Your Brainstorming Session Request
+
+Good morning,
+
+Thank you for reaching out about hosting your brainstorming session on June 14. We're excited to assist you with this event.
+
+To ensure we have everything set up perfectly, could you please provide a bit more information? Specifically, we need to know:
+
+- The time of your event
+- The office location where it will be held
+- Any dietary requirements for your guests
+- If you require any AV equipment for the session
+- Any extra arrangements you might need
+
+Once we have these details, we can provide you with the cost estimate and finalize the arrangements.
+
+Looking forward to your response.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,17,"Friday, October 23",Farewell gathering for a colleague,,Lunch,15,,Catered lunch,Hilversum office,Vegan options,Grand Cafe,,,"[""event_time"", ""external_guests"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-up on Farewell Gathering Details
+
+Hi [Name],
+
+Thank you for reaching out to us and sharing the details of the farewell gathering planned for Friday, October 23 at the Hilversum office. We’re excited to assist in making this event special!
+
+To ensure everything is perfectly arranged, could you please provide a bit more information on the following:
+
+- The specific time when you would like the event to start.
+- Whether there will be any external guests attending.
+- If you require any AV equipment for presentations or other purposes.
+- Any extra arrangements or special requests you might have in mind.
+
+Once we have these details, we’ll be able to proceed with the necessary arrangements, including booking the Grand Cafe and organizing a catered lunch with vegan options.
+
+Thank you for your assistance, and please feel free to reach out if you have any questions or further requests.
+
+Best regards,
+
+[Your Name]
+Hospitality Team
+Xebia"
+v3,gpt-4o,18,"Wednesday, February 10",Full day workshop for tech client,,Lunch,To be confirmed,Tech client,Light lunch with sandwiches and drinks,Wibaut office,,Training room,,Snacks for the afternoon session,"[""event_time"", ""dietary_requirements"", ""av_equipment""]","Subject: Follow-up: Workshop Details Needed
+
+Hi [Name],
+
+Thank you for reaching out with the details of the upcoming workshop on February 10 at the Wibaut office. It sounds like an exciting event!
+
+To ensure everything is perfectly arranged, could you please provide some additional details:
+
+1. The start and end time of the event.
+2. Any specific dietary requirements for the lunch and snacks.
+3. AV equipment needs for the training room.
+
+Once I have this information, I'll be able to proceed with the arrangements smoothly.
+
+Looking forward to your response!
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Back-Office Team"
+v3,gpt-4o,19,"Thursday, March 5",Meeting with Appian,10:00 AM to 2:00 PM,Lunch,12,Appian client,Lunch with vegetarian options,Amsterdam office,Vegetarian options,B212,,,"[""av_equipment"", ""extra_arrangements""]","Subject: Follow-Up on Meeting Request for March 5
+
+Hi [Name],
+
+Thank you for the details regarding the upcoming meeting for our client, Appian. I'm happy to assist with the arrangements.
+
+Could you please let me know if any AV equipment will be needed for the meeting? Additionally, if there are any extra arrangements or specific requirements you'd like us to consider, please share those as well.
+
+Looking forward to your response.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Back-Office Team"
+v3,gpt-4o,20,"Tuesday, July 8",Visit from Paris office,9 AM until 4 PM,Lunch,16,Group from Paris office,"Coffee and snacks throughout the day, simple lunch",Laap,To be confirmed,Meeting space,,,"[""av_equipment"", ""extra_arrangements""]","Subject: Additional Information Needed for Paris Office Visit
+
+Dear [Name],
+
+Thank you for your request regarding the upcoming visit from our Paris office on July 8. We are happy to assist with the arrangements at the Laap location.
+
+To ensure we meet all your needs, could you please let us know if any AV equipment is required for the meeting? Additionally, if there are any extra arrangements or specific preferences you'd like during the day, please share those details with us.
+
+Looking forward to your response.
+
+Best regards,
+
+[Your Name]  
+Hospitality Team, Xebia"
+v3,gpt-4o,21,"Thursday, July 15",Executive roundtable with key partners,8:00 AM,Breakfast,12,Key partners,"Light breakfast with pastries, coffee, and tea",Amsterdam office,Gluten-free options for one attendee,Paris room,,,"[""av_equipment"", ""extra_arrangements""]","Subject: Additional Details for Executive Roundtable
+
+Hi [Name],
+
+Thank you for reaching out and providing the details for the upcoming executive roundtable. We're excited to assist with the arrangements.
+
+To ensure everything is perfectly set up for your meeting, could you please let us know if you require any AV equipment in the Paris room? Additionally, if there are any extra arrangements or special requests beyond the gluten-free option, feel free to share those with us.
+
+Looking forward to your response.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,22,"Wednesday, August 10",Strategy workshop with Shell,2 PM to 5 PM,Sandwiches and coffee,15,Shell colleagues,Sandwiches and coffee,,,Room 3.02,,,"[""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]","Subject: Additional Details Needed for August 10 Workshop Catering
+
+Hi [Name],
+
+Thank you for your request. To ensure everything is perfectly arranged for the strategy workshop with Shell on August 10, could you please provide a bit more information?
+
+- Office location where the event will be held
+- Any dietary requirements for the attendees
+- AV equipment needed for the workshop
+- Any extra arrangements you might require
+
+Please let us know at your earliest convenience so we can make the necessary preparations.
+
+Thanks for your cooperation!
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Back-Office Team"
+v3,gpt-4o,23,"Monday, September 5",Knowledge-sharing session,,Lunch,20,A few partners,Catered lunch with sandwiches and salad bar,Hilversum office,Vegetarian option,,,,"[""event_time"", ""room_location"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-up on Catering Request for Knowledge-Sharing Session
+
+Dear [Requester's Name],
+
+Thank you for reaching out regarding the catering arrangements for the upcoming knowledge-sharing session on September 5th. We're excited to assist with ensuring everything runs smoothly.
+
+To finalize the arrangements, could you please provide the following details?
+- The time of the event
+- Room location within the Hilversum office
+- Any AV equipment requirements
+- Any additional arrangements or special requests
+
+Once I have this information, I'll proceed with coordinating the catered lunch and ensure we meet all your needs.
+
+Looking forward to your reply.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,24,"Friday, June 25",Team-building event,,Lunch,25,Colleagues from Paris office,Barbecue lunch,,,Rooftop terrace,Projector,,"[""event_time"", ""office_location"", ""dietary_requirements"", ""extra_arrangements""]","Subject: Follow-Up: Team-Building Event on June 25
+
+Hi [Name],
+
+Thank you for reaching out with the request for the team-building event. I'm excited to help organize it!
+
+Could you please provide a few more details to ensure everything goes smoothly?
+- What time would you like the event to start and end?
+- Could you confirm which office location this will be held at?
+- Are there any specific dietary requirements we should be aware of?
+- Are there any additional arrangements or equipment you might need besides the projector?
+
+Once I have this information, I'll be able to proceed with the arrangements. Looking forward to your reply!
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,25,"Friday, October 22",Kick-off meeting for a new project,10:00 AM to 3:00 PM,,To be confirmed,,"Snacks, coffee, and tea throughout the day",,,Berlin room,,,"[""meal_type"", ""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]","Subject: Additional Details Needed for Kick-off Meeting Arrangements
+
+Dear [Name],
+
+Thank you for reaching out to us regarding the arrangements for your upcoming kick-off meeting on October 22. We’re happy to assist with the preparations.
+
+To ensure everything is perfectly organized, could you please provide the following details at your earliest convenience?
+- Will there be a specific meal type required, such as breakfast or lunch?
+- Are there any external guests joining the meeting?
+- Which office location will you be in?
+- Are there any dietary requirements we should be aware of?
+- Will you need any AV equipment for the meeting?
+- Are there any extra arrangements or special requests we should consider?
+
+Once we have this information, we'll be able to make the necessary arrangements to ensure a smooth and successful meeting.
+
+Thank you, and please let me know if you have any questions.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,26,"Thursday, April 13",Strategy session with ING,10:00 AM to 4:00 PM,Lunch,15,ING partner,Lunch with vegetarian options,,Vegetarian options,Amsterdam room,Projector,,"[""office_location"", ""extra_arrangements""]","Subject: Follow-up on Strategy Session Request
+
+Hi James,
+
+Thank you for reaching out with the details for your strategy session with ING. To ensure everything is set up perfectly, could you please let me know the office location for the reservation? Additionally, if you require any extra arrangements beyond the lunch setup and projector, please let me know.
+
+Looking forward to your response.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,27,"Monday, March 8",Get-together for new hires,2:00 to 5:00 PM,Snacks,8,Internal Xebia employees,Coffee and snacks,,,Grand Café,,,"[""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-up on Your Get-together Request
+
+Hi Lisa,
+
+I hope you're doing well too!
+
+Thanks for reaching out about the get-together for the new hires. It sounds like a great initiative! To ensure everything is set up perfectly, could you please provide a bit more information?
+
+- Which office location will you be using for the event?
+- Are there any specific dietary requirements we should be aware of for the snacks?
+- Will you need any AV equipment during the get-together?
+- Are there any extra arrangements or special requests you'd like us to consider?
+
+Once I have these details, I'll be able to finalize the arrangements for you.
+
+Thanks so much, and I'm here if you have any questions!
+
+Cheers,  
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,28,"Friday, November 15",Brainstorming session with Deloitte,9:00 AM,Breakfast,12,Deloitte,Light breakfast,,,Paris room,,,"[""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]","Subject: Additional Information Needed for Upcoming Brainstorming Session
+
+Dear Robert,
+
+Thank you for reaching out with the details of the upcoming brainstorming session with Deloitte. We're eager to assist in making it a successful event.
+
+To ensure we meet all your needs, could you please provide the following additional information at your earliest convenience?
+
+- Office location where the Paris room is situated.
+- Any dietary requirements or preferences for the breakfast.
+- AV equipment needs for the session.
+- If there are any extra arrangements or specific requests you might have.
+
+Once we have this information, we can proceed with the arrangements promptly. If there's anything else we can do to assist, please let us know.
+
+Looking forward to your reply.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,29,"Wednesday, August 23",Training day for internal staff,,Lunch,18,No,To be confirmed,,,B203,,,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]","Subject: Additional Information Needed for Lunch Reservation
+
+Hi Anna,
+
+Thank you for reaching out about the training day on August 23rd. I'd be happy to tentatively reserve lunch for your team. To ensure everything is arranged smoothly, could you please provide a few additional details?
+
+- What time will the event take place?
+- Which office location should we arrange the lunch for?
+- Are there any dietary requirements we should be aware of?
+- Will you need any AV equipment for the event?
+- Are there any extra arrangements or specific requests you'd like us to consider?
+
+Feel free to let me know at your earliest convenience. Looking forward to assisting you with this event!
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Back-Office Team"
+v3,gpt-4o,30,Next Tuesday,Visit from Salesforce,1:00 PM to 5:00 PM,,20,Salesforce,Coffee and tea service,,To be confirmed,Training room A101,,,"[""meal_type"", ""office_location"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-Up on Training Room and Refreshments Request
+
+Hi Marco,
+
+Thank you for your request regarding the Salesforce visit next Tuesday. I'm happy to assist with arranging the training room and refreshments.
+
+To ensure everything is set up perfectly, could you please provide a bit more information on the following:
+
+- Meal type: Will there be any snacks or meals needed in addition to coffee and tea?
+- Office location: Could you confirm which office location the meeting will be held at?
+- AV equipment: Will you need any specific audio-visual equipment for the session?
+- Extra arrangements: Are there any additional arrangements or specific setup requirements we should be aware of?
+
+Feel free to update me on any dietary needs when you have them. Looking forward to your response!
+
+Best regards,
+
+[Your Name]
+Xebia Hospitality Team"
+v3,gpt-4o,31,March 15th,Strategy catch-up,10:00 AM to 12:00 PM,Light snacks and coffee,8,"No, just our core team",Light snacks and coffee,,,Room B211,,,"[""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]","Subject: Additional Details Needed for Your March 15th Meeting
+
+Hi [Name],
+
+Thank you for reaching out with your meeting request. I'm happy to assist with the arrangements for your strategy catch-up on March 15th.
+
+Could you please provide a bit more information to help us process your request?
+- **Office Location**: Which office will you be holding the meeting in?
+- **Dietary Requirements**: Are there any specific dietary requirements or preferences we should be aware of for the snacks and coffee?
+- **AV Equipment**: Will you require any AV equipment for your meeting?
+- **Extra Arrangements**: Are there any additional arrangements or special requests you'd like us to consider?
+
+Once I have this information, I can finalize the booking and ensure everything is in place for your meeting.
+
+Thank you, and I look forward to your response.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,32,February 5th,Potential partner visit,,Lunch,14,3 external guests,Simple lunch with assorted sandwiches and a vegetarian option,Rotterdam,To be confirmed,Suitable meeting room,,Water and tea available throughout the meeting,"[""event_time"", ""av_equipment""]","Subject: Follow-up on Meeting Room and Catering Request
+
+Hi [Name],
+
+Thank you for reaching out with the details of the upcoming meeting on February 5th. I am in the process of arranging the meeting room and catering services for your group.
+
+Could you please provide the event time so that I can reserve the room accordingly? Additionally, let me know if you require any AV equipment during the meeting.
+
+Looking forward to your response. Please feel free to reach out if there’s anything else I can assist you with.
+
+Best regards,
+
+[Your Name]  
+Hospitality Team  
+Xebia"
+v3,gpt-4o,33,April 22nd,Small team meeting,8:30 AM until noon,Breakfast,10,,Breakfast with pastries and fruit,,,Room 3.02,,Breakfast setup in the Grand Café,"[""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment""]","Subject: Additional Details Needed for Breakfast Meeting on April 22nd
+
+Hi [Name],
+
+Thank you for reaching out with your breakfast request for the meeting on April 22nd. We're happy to assist in arranging everything for you.
+
+Could you please provide a few additional details to help us ensure everything is perfectly set up for your team?
+
+- Are there any external guests joining the meeting?
+- Could you confirm the office location for the setup?
+- Do any attendees have specific dietary requirements we should be aware of?
+- Will you need any AV equipment for your discussions in Room 3.02?
+
+Once we have this information, we can finalize the arrangements for you. Looking forward to your reply!
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,34,July 9th,Project review session,2 PM to 5 PM,,15,,Coffee and snacks,Amsterdam office,To be confirmed,A302,Projector,,"[""meal_type"", ""external_guests"", ""extra_arrangements""]","Subject: Follow-Up on Room and Refreshment Request for July 9th
+
+Good afternoon,
+
+Thank you for your request regarding the project review session on July 9th. I'm in the process of arranging everything for you and just needed a few additional details to ensure everything is set up perfectly.
+
+Could you please let me know:
+- The type of meal you would prefer for the session.
+- If there will be any external guests attending.
+- Any extra arrangements you might need, aside from the coffee, snacks, and projector.
+
+Looking forward to your reply so we can finalize the arrangements.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,35,August 3rd,Small workshop,9:00 AM to noon,Sandwiches and drinks,8,2 guests,,Hilversum office,To be confirmed,Any available space,,,"[""catering_type"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-up on Workshop Request for August 3rd
+
+Hi [Name],
+
+Thank you for reaching out to us about organizing the workshop on August 3rd. We're happy to assist you with the arrangements.
+
+To ensure everything goes smoothly, could you please provide a bit more information on the following:
+
+1. **Catering Type**: Do you have a preference for the type of sandwiches and drinks? We can offer vegetarian, vegan, or any specific preferences you might have.
+
+2. **AV Equipment**: Will you need any audio-visual equipment for the workshop, such as a projector or screen?
+
+3. **Extra Arrangements**: Are there any other specific arrangements or requirements you'd like us to consider for your session?
+
+Thank you for your help in providing these details. Once we have this information, we can proceed with making the necessary arrangements. Looking forward to your reply!
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Back-Office Team"
+v3,gpt-4o,36,"Wednesday, July 22",Internal workshop for DevOps team,10:00 AM to 3:00 PM,Lunch,18,No,Salads and sandwiches,Hilversum,Vegan,Training room,Projector,,"[""extra_arrangements""]","Subject: Additional Information Needed for Your Workshop Request
+
+Hello [Name],
+
+Thank you for reaching out with the details of your upcoming DevOps workshop. We are glad to assist in arranging the space and amenities for your event at the Hilversum office.
+
+To ensure everything is perfectly set up for your team, could you please let us know if there are any extra arrangements or specific requirements you'd like us to consider for the workshop?
+
+Looking forward to your response, and we'll do our best to accommodate your needs.
+
+Best regards,
+
+[Your Name]  
+Hospitality Back-Office Team  
+Xebia"
+v3,gpt-4o,37,"Friday, August 7th",Partner meeting with AWS,11:00 AM to 3:00 PM,Lunch,12,AWS,Mix of wraps and fruit platters,Wibaut office,To be confirmed,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-Up on Partner Meeting Arrangements
+
+Hi [Name],
+
+Thank you for reaching out with the details for the upcoming partner meeting with AWS on August 7th. I’m happy to assist in getting everything organized for you.
+
+Could you please let me know which specific room location within the Wibaut office you prefer? Additionally, if there is any AV equipment you might need for the meeting, please let me know so I can ensure it is available and set up. Lastly, if there are any extra arrangements or special requests you have in mind, feel free to share those as well.
+
+Looking forward to your reply.
+
+Cheers,
+
+[Your Name]"
+v3,gpt-4o,38,"Monday, September 14",Team-building session,2:00 PM,Snacks and drinks,25,,,,,Bangalore room,,,"[""external_guests"", ""catering_type"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-Up: Team-Building Session Details Needed
+
+Hi [Name],
+
+Thank you for reaching out to us with your request for the team-building session on September 14. We’re excited to assist you with the arrangements. To ensure everything goes smoothly, could you please provide a bit more information on the following?
+
+- Will there be any external guests attending?
+- Do you have any specific catering type in mind for the snacks and drinks?
+- Could you confirm the office location for this event?
+- Are there any dietary requirements we should be aware of?
+- Will you need any AV equipment for the session?
+- Are there any extra arrangements or special requests you would like us to consider?
+
+Once we have these details, we’ll be able to proceed with the arrangements efficiently. 
+
+Thank you, and looking forward to your response.
+
+Best regards,
+
+[Your Name]  
+Hospitality Team, Xebia"
+v3,gpt-4o,39,"Thursday, October 15th",Client meeting with ING,1:00 PM until 5:00 PM,Lunch,15,ING clients,Catered lunch with vegetarian options,Amsterdam office,Vegetarian options,Paris room,,Setup with chairs in a semicircle,"[""av_equipment""]","Subject: Follow-up on Room Reservation Request
+
+Dear [Name],
+
+Thank you for your request regarding the client meeting scheduled for October 15th. We are currently arranging the Paris room and catering for your event.
+
+Could you please let us know if you require any AV equipment for the meeting? Once we have this information, we can proceed with finalizing the arrangements.
+
+Please feel free to reach out if you have any other questions or additional requests.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,40,"Tuesday, November 3",Internal Product Demo,Full day,Lunch,20,Internal Xebia employees,Light lunch with sandwiches,Wibaut office,,Training Room A,Projector,,"[""dietary_requirements"", ""extra_arrangements""]","Subject: Additional Details for Your Upcoming Product Demo
+
+Hi [Name],
+
+Thank you for your request regarding the internal product demo on November 3rd. We're excited to assist you with the arrangements.
+
+Could you please provide any specific dietary requirements for the lunch? Additionally, if there are any extra arrangements or specific needs beyond what you've mentioned, please let me know.
+
+Looking forward to your response so we can ensure everything is perfect for your event.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Back-Office Team"
+v3,gpt-4o,41,October 25,Strategy session with key partners,14:00 to 18:00,Light refreshments,18,4 from external companies,Sandwiches and drinks,Laap office,To be confirmed,Larger training room,,,"[""av_equipment"", ""extra_arrangements""]","Subject: Follow-Up on Strategy Session Request for October 25
+
+Hi [Name],
+
+Thank you for your request regarding the strategy session on October 25 at the Laap office. We're excited to assist in making this event a success.
+
+To ensure we meet all your needs, could you please let us know if you require any AV equipment for the session? Additionally, if there are any extra arrangements or specific setups you would like, please do share those details with us.
+
+Looking forward to your confirmation on dietary requirements as well.
+
+Thank you!
+
+Best regards,  
+[Your Name]  
+Xebia Hospitality Back-Office Team"
+v3,gpt-4o,42,"Friday, November 7",Meeting with a client,10:00 AM to 1:00 PM,Lunch,15,3 people from the client side,Simple catered lunch with sandwiches and salads,Hilversum office,Vegetarian-friendly option,Meeting room,,,"[""av_equipment"", ""extra_arrangements""]","Subject: Additional Details for Your Meeting Request
+
+Hi [Name],
+
+Thank you for reaching out with your meeting request for Friday, November 7 at the Hilversum office. I'm in the process of securing a meeting room and organizing the catered lunch as you specified.
+
+Could you please let me know if you require any AV equipment for the meeting? Additionally, if there are any extra arrangements or specific needs you have in mind, please feel free to share those details.
+
+Looking forward to your reply.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,43,"Monday, October 20",Internal workshop on Agile practices,9:00 AM to 3:00 PM,,25,Internal Xebia employees,Coffee and tea setup with snacks,Wibaut office,To be confirmed,Room suitable for about 25 people,,,"[""meal_type"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-up on Agile Practices Workshop Details
+
+Hello [Name],
+
+Thank you for the details regarding the upcoming Agile practices workshop on October 20th. It sounds like a productive day is planned!
+
+To ensure everything is set up perfectly, could you please provide a bit more information on the following:
+
+1. **Meal Type**: Would you like us to arrange a specific type of meal or catering service for lunch?
+2. **AV Equipment**: Will you require any audio-visual equipment such as projectors or microphones for the workshop?
+3. **Extra Arrangements**: Are there any additional arrangements or special requests we should be aware of?
+
+Once we have this information, we'll make sure everything is in place to support a successful workshop.
+
+Looking forward to your response.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Back-Office Team"
+v3,gpt-4o,44,"Thursday, October 12",Meeting with Appian partners,8:30 to 11:30,Breakfast,12,Partners from Appian,"Catered breakfast with pastries, fruits, and juices",Amsterdam office,To be confirmed,Boardroom,,,"[""av_equipment"", ""extra_arrangements""]","Subject: Follow-Up on Breakfast Catering Request for October 12th
+
+Dear [Name],
+
+Thank you for reaching out with the breakfast catering request for this Thursday's meeting. We’re happy to assist with the arrangements.
+
+Could you please let us know if you require any AV equipment for the meeting or if there are any extra arrangements you'd like us to consider?
+
+Looking forward to your response.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Back-Office Team"
+v3,gpt-4o,45,"Friday, December 1",Team-building event,16:00 to 18:30,Dinner,30,,Buffet-style dinner,Grand Café,,,To be confirmed,Series of fun activities,"[""external_guests"", ""dietary_requirements"", ""room_location""]","Subject: Follow-Up: Team-Building Event Details
+
+Hi [Name],
+
+Thank you for reaching out to us regarding the team-building event on December 1st at the Grand Café. It sounds like a great plan!
+
+To ensure everything goes smoothly, could you please provide a bit more information on the following points?
+- Will there be any external guests joining the event?
+- Are there any specific dietary requirements we should be aware of for the buffet dinner?
+- Do you have a preferred room location within the Grand Café for the event?
+
+Once we have these details, we can proceed to arrange everything accordingly.
+
+Thank you, and looking forward to your reply!
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,46,March 14th,Gathering with DevOps partners,,Lunch,18,DevOps partners,Sandwiches or small buffet,,To be confirmed,Paris room,,,"[""event_time"", ""office_location"", ""av_equipment"", ""extra_arrangements""]","Subject: Re: Gathering with DevOps Partners on March 14th
+
+Hello [Name],
+
+Thank you for reaching out with the details of your upcoming gathering. We're delighted to assist in making the event a success.
+
+To proceed with your request, could you please provide us with the following additional details?
+- The specific time you plan to hold the event.
+- The office location where the Paris room is situated.
+- Any AV equipment you might require for the gathering.
+- Any extra arrangements or specific setups you might need.
+
+Once we have this information, we'll be able to confirm the availability of the Paris room and coordinate the catering accordingly.
+
+Looking forward to your reply.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Back-Office Team"
+v3,gpt-4o,47,January 22nd,Visit from Berlin office colleagues,8:30 AM,Breakfast,15,Berlin office colleagues,"Mix of pastries, fruits, coffee, and juice",,,Grand Café,Projector,,"[""office_location"", ""dietary_requirements"", ""extra_arrangements""]","Subject: Additional Details for January 22nd Breakfast Event
+
+Hi [Name],
+
+Thank you for reaching out with the request for a welcoming breakfast at the Grand Café. We are excited to assist in making this event a success for our Berlin colleagues.
+
+To proceed with the arrangements, could you please provide us with the following details:
+- The office location where the event will be held.
+- Any specific dietary requirements or preferences we should be aware of.
+- Any additional arrangements or equipment needed apart from the projector.
+
+Once we have this information, we can finalize the arrangements and ensure everything is set for a wonderful breakfast.
+
+Best regards,
+
+[Your Name]  
+Hospitality Team  
+Xebia"
+v3,gpt-4o,48,"Tuesday, October 10th",Client Workshop,,Lunch,25,Client,Simple lunch with sandwiches and salads,Hilversum office,To be confirmed,Training room,,,"[""event_time"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-up on Workshop Arrangements for October 10th
+
+Hi [Name],
+
+Thank you for reaching out with the details for the upcoming client workshop on October 10th at the Hilversum office. I'm happy to assist with the arrangements.
+
+Could you please provide the following additional details to ensure everything is set up perfectly for the event?
+
+- The event's start and end times
+- Any specific AV equipment needed
+- Any extra arrangements or special requirements for the day
+
+Looking forward to your confirmation on the number of participants and any dietary restrictions as well. Please let me know if there's anything else I can do to help.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Back-Office Team"
+v3,gpt-4o,49,November 3rd,Internal team-building session,13:00 to evening,Dinner,30,Internal Xebia employees only,Light dinner,Utrecht office,Vegetarian preferences,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-up on Team-Building Session Arrangements
+
+Dear [Name],
+
+Thank you for reaching out to us regarding the team-building session on November 3rd. We’re excited to assist you in organizing the event at the Utrecht office.
+
+To ensure everything goes smoothly, could you please provide us with the specific room location for the session? Additionally, let us know if you require any AV equipment or if there are any extra arrangements you would like us to consider.
+
+Looking forward to your response.
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o,50,February 5th,Meeting with TechSavvy,10:00 AM,,10,TechSavvy,"Coffee, tea, and snacks",,To be confirmed,Boardroom,,,"[""meal_type"", ""office_location"", ""av_equipment"", ""extra_arrangements""]","Subject: Follow-Up on Meeting Arrangements for February 5th
+
+Hi [Name],
+
+Thank you for reaching out to us regarding the meeting with TechSavvy. We're happy to assist with the arrangements. To ensure everything is perfectly set up, could you please provide a bit more information on the following?
+
+- Meal type preference for the snacks
+- Office location for the Boardroom
+- Any specific AV equipment needed
+- Any extra arrangements you'd like us to consider
+
+Once we have these details, we'll make sure everything is ready for your meeting. Looking forward to your reply!
+
+Best regards,
+
+[Your Name]  
+Xebia Hospitality Team"
+v3,gpt-4o-mini,1,"Thursday, March 5th",Workshop for potential clients,10:00 AM to 3:00 PM,Light lunch,18,Potential clients,Sandwiches and salads,,,Orange Room,,Coffee and tea for the morning session,"[""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4o-mini,2,"Monday, April 14th",Tech Talk,Starting around 1:00 PM,Meal afterwards,25,,Pizzas or something easy,Wibaut office,,,,Room reservation for the entire afternoon,"[""external_guests"", ""dietary_requirements"", ""room_location"", ""av_equipment""]",
+v3,gpt-4o-mini,3,"Wednesday, July 22",Partner Event with SAP,2:00 PM to 6:00 PM,Refreshments and snacks,15,SAP stakeholders,To be confirmed,,,,AV equipment for presentations,Advice on a good spot for a post-meeting dinner,"[""office_location"", ""dietary_requirements"", ""room_location""]",
+v3,gpt-4o-mini,4,"Friday, May 8th",Strategy Session,12:30 PM,Lunch,7,,Simple lunch with wraps and salads,,Gluten-free,Paris Room,,,"[""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,5,June 10th,Client Engagement Session,10:00 AM to 4:00 PM,Lunch,20,Visitors from Ericsson,Buffet with multiple dietary options,,,Grand Café,,,"[""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,6,"Thursday, September 15",Leadership Workshop,12:30,Light lunch,18,Mix of internal and external stakeholders,Selection of salads and wraps,,To be confirmed,A202,Projector,,"[""office_location"", ""extra_arrangements""]",
+v3,gpt-4o-mini,7,"Thursday, March 10",Client Workshop,9:00 AM,Breakfast,25,Clients,Simple breakfast with pastries and coffee,Hilversum,,Meeting room,,,"[""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,8,"Monday, October 3rd",Strategy session,10:00 to 3:00 PM,Lunch,15,,Mix of sandwiches and fruit platter,,To be confirmed,G110,,,"[""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,9,"Thursday, July 7th",Roundtable discussion,,,10,"A few from our partner, TechAdvantage","Refreshments like coffee, tea, and snacks",Laap office,,Paris room,,,"[""event_time"", ""meal_type"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,10,"Friday, August 20th",Internal training session,2:00 PM to 5:00 PM,,12,Internal Xebia employees,,Wibaut office,,Training room II,,Coffee station setup nearby,"[""meal_type"", ""catering_type"", ""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4o-mini,11,May 18,Client Workshop with KLM,,Lunch,15,KLM,Simple lunch with sandwiches and salads,,,Grand Cafe,,Reserve a table for the group,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4o-mini,12,"Tuesday, July 7",Strategy Meeting,09:00 - 15:00,Light breakfast and lunch,18,,Lunch with vegetarian option,Utrecht,To be confirmed,B201,,,"[""external_guests"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,13,June 14,Coding Bootcamp,10:00 to 17:00,Snacks and drinks,25,A few from our partner company,Snacks and drinks,Amsterdam,,Training Room A,,Snacks and drinks available throughout the day,"[""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4o-mini,14,"Friday, April 21",Leadership team lunch,,Lunch,8,,Catered lunch with sandwiches and fruit platter,,,Paris room,,Coffee and tea available,"[""event_time"", ""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4o-mini,15,March 30,Networking event,14:00 to 18:00,Finger foods,20,Guests from Deloitte,Selection of finger foods and soft drinks,,To be confirmed,Training Room C,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,16,"Monday, June 14",Brainstorming session with strategic partners,,Pastries and coffee,To be confirmed,Strategic partners,Casual catering,,,A102,,,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,17,"Friday, October 23",Farewell gathering,,Lunch,15,,Catered lunch,Hilversum,Vegan options,Grand Cafe,,,"[""event_time"", ""external_guests"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,18,"Wednesday, February 10",Workshop for tech client,,Light lunch,18,Tech client,Lunch with sandwiches and drinks,Wibaut office,,Training room,,Snacks for the afternoon session,"[""event_time"", ""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4o-mini,19,"Thursday, March 5",Meeting with Appian,10:00 AM to 2:00 PM,Lunch,12,Appian,Lunch with vegetarian options,Amsterdam,,B212,,,"[""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,20,"Tuesday, July 8",Meeting with Paris office,9 AM until 4 PM,Lunch,16,Paris office team,"Coffee, snacks, and simple lunch",Laap,To be confirmed,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,21,"Thursday, July 15",Executive Roundtable,8:00 AM,Breakfast,12,Key partners,"Light breakfast with pastries, coffee, and tea",Amsterdam,Gluten-free options,Paris room,,To be confirmed,"[""av_equipment""]",
+v3,gpt-4o-mini,22,"Wednesday, August 10",Strategy Workshop with Shell,2 PM to 5 PM,Sandwiches and coffee,15,Shell colleagues,Sandwiches and coffee,,,3.02,,,"[""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,23,"Monday, September 5",Knowledge-sharing session,,Lunch,20,A few partners,Catered lunch with sandwiches and salad bar,Hilversum,Vegetarian option,,,Final count to be confirmed by next week,"[""event_time"", ""room_location"", ""av_equipment""]",
+v3,gpt-4o-mini,24,"Friday, June 25",Team-building event,,Barbecue lunch,25,Colleagues from Paris office,Barbecue,,,Rooftop terrace,Projector,,"[""event_time"", ""office_location"", ""dietary_requirements"", ""extra_arrangements""]",
+v3,gpt-4o-mini,25,"Friday, October 22",Kick-off meeting for a new project,10:00 AM to 3:00 PM,"Snacks, coffee, and tea",To be confirmed,,"Snacks, coffee, and tea",,,Berlin room,,,"[""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,26,"Thursday, April 13",Strategy session with ING,10:00 AM to 4:00 PM,Lunch,15,ING,Lunch setup with vegetarian options,,Vegetarian options,Amsterdam room,Projector,,"[""office_location"", ""extra_arrangements""]",
+v3,gpt-4o-mini,27,"Monday, March 8",Get-together for new hires,2:00 to 5:00 PM,Coffee and snacks,8,,Coffee and snacks,,,Grand Café,,,"[""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,28,"Friday, November 15",Brainstorming session with Deloitte,9:00 AM,Light breakfast,12,Deloitte,Light breakfast,,,Paris room,,,"[""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,29,"Wednesday, August 23",Training day for internal staff,,Lunch,18,Internal staff,To be confirmed,,,B203,,,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,30,Next Tuesday,Visit from Salesforce,1:00 PM to 5:00 PM,Coffee and tea service,20,Salesforce,Coffee and tea service,,To be confirmed,A101,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,31,March 15th,Strategy catch-up,10:00 AM to 12:00 PM,Light snacks and coffee,8,Core team,Light snacks and coffee,,,Room B211,,,"[""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,32,February 5th,Visit from potential partner,,Lunch,14,3 external guests,Simple lunch with assorted sandwiches and a vegetarian option,Rotterdam,To be confirmed,Suitable meeting room,,Water and tea available throughout the meeting,"[""event_time"", ""av_equipment""]",
+v3,gpt-4o-mini,33,April 22nd,Team Meeting,8:30 AM to noon,Breakfast,10,,Breakfast with pastries and fruit,,,Room 3.02,,Breakfast setup in Grand Café,"[""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4o-mini,34,July 9th,Project Review Session,2 PM to 5 PM,Coffee and snacks,15,,To be confirmed,Amsterdam,To be confirmed,A302,Projector,,"[""external_guests"", ""extra_arrangements""]",
+v3,gpt-4o-mini,35,August 3rd,Workshop,9:00 AM to noon,Sandwiches and drinks,8,2 guests,Sandwiches and drinks,Hilversum,To be confirmed,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,36,"Wednesday, July 22",Internal workshop for DevOps team,10:00 AM to 3:00 PM,Lunch,18,Internal Xebia employees,Lunch with salads and sandwiches,Hilversum,Vegan,Training room,Projector,,"[""extra_arrangements""]",
+v3,gpt-4o-mini,37,"Friday, August 7th",Partner meeting with AWS,11:00 AM to 3:00 PM,Lunch,12,AWS,Mix of wraps and fruit platters,Wibaut office,To be confirmed,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,38,"Monday, September 14",Team-building session,2:00 PM,Snacks and drinks,25,,To be confirmed,,,Bangalore,,,"[""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,39,"Thursday, October 15th",Client Meeting with ING,1:00 PM until 5:00 PM,Catered lunch,15,ING,Catered lunch with vegetarian options,Amsterdam,,Paris room,,Setup with chairs in a semicircle,"[""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4o-mini,40,"Tuesday, November 3",Internal product demo,,Lunch,20,Internal Xebia employees,Light lunch with sandwiches,Wibaut office,,Training Room A,Projector,,"[""event_time"", ""dietary_requirements"", ""extra_arrangements""]",
+v3,gpt-4o-mini,41,October 25,Strategy session with key partners,14:00 to 18:00,Light refreshments,18,4 from external companies,Sandwiches and drinks,Laap office,To be confirmed,Larger training room,,,"[""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,42,"Friday, November 7",Meeting with client,10:00 AM to 1:00 PM,Lunch,15,3 people from the client side,"Simple catered lunch with sandwiches and salads, vegetarian-friendly option",Hilversum,Vegetarian-friendly option,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,43,"Monday, October 20",Internal Workshop on Agile practices,9:00 AM - 3:00 PM,Snacks,25,Internal Xebia employees,Coffee and tea setup with snacks,Wibaut office,To be confirmed,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,44,"Thursday, October 12",Meeting,8:30 to 11:30,Breakfast,12,Partners from Appian,"Catered breakfast with pastries, fruits, and juices",Amsterdam,To be confirmed,Boardroom,,,"[""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,45,"Friday, December 1",Team-building event,16:00 - 18:30,Dinner,30,,Buffet-style dinner,,,Grand Café,To be confirmed,,"[""external_guests"", ""office_location"", ""dietary_requirements"", ""extra_arrangements""]",
+v3,gpt-4o-mini,46,March 14th,Gathering with DevOps partners,,Lunch,18,DevOps partners,Sandwiches or small buffet,,To be confirmed,Paris room,,,"[""event_time"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,47,January 22nd,Colleagues Visit,8:30 AM,Breakfast,15,Colleagues from the Berlin office,"Mix of pastries, fruits, coffee, and juice",Grand Café,,,Projector,,"[""dietary_requirements"", ""room_location"", ""extra_arrangements""]",
+v3,gpt-4o-mini,48,October 10th,Client Workshop,,Lunch,25,Client,Simple lunch with sandwiches and salads,Hilversum,To be confirmed,Training room,,,"[""event_time"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,49,November 3rd,Internal team-building session,13:00 to evening,Light dinner,30,Internal team,To be confirmed,Utrecht,Vegetarian preferences,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4o-mini,50,February 5th,Meeting with TechSavvy,10:00 AM,"Coffee, tea, and snacks",10,TechSavvy,To be confirmed,,To be confirmed,Boardroom,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,1,"Thursday, March 5th",Workshop for potential clients,10:00 AM to 3:00 PM,Light lunch,18,Potential clients,Sandwiches and salads,,,Orange Room,,Coffee and tea for the morning session,"[""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4.1-nano,2,"Monday, April 14th",Tech talk,1:00 PM onwards,Pizza or similar,25,,Easy meal (pizza or similar),Wibaut,,,,Reserve suitable room for entire afternoon,"[""external_guests"", ""dietary_requirements"", ""room_location"", ""av_equipment""]",
+v3,gpt-4.1-nano,3,"Wednesday, July 22",Partner Event,2:00 PM to 6:00 PM,Snacks,15,Partner company SAP,Refreshments and snacks,,,,AV equipment for presentations,Advice on post-meeting dinner spot,"[""office_location"", ""dietary_requirements"", ""room_location""]",
+v3,gpt-4.1-nano,4,"Friday, May 8th",Strategy session,12:30 PM,Lunch,7,,Wraps and salads,,Gluten-free attendee,Paris Room,,,"[""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,5,June 10th,Client engagement session,10:00 AM to 4:00 PM,Lunch,20,Visitors from Ericsson,Buffet with multiple dietary options,,Multiple dietary options,Grand Café,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,6,"Thursday, September 15",Leadership workshop,around 12:30,Light lunch,18,External stakeholders,Selection of salads and wraps,,To be confirmed,A202,Projector,,"[""office_location"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,7,"Thursday, March 10",Client Workshop,9:00 AM,Breakfast,25,Client,Pastries and coffee,Hilversum,,Meeting room,,,"[""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,8,"Monday, October 3rd",Strategy session,10:00 to 3:00 PM,Lunch,15,,Sandwiches and fruit platter,,"To be confirmed, possible gluten-free request",G110,,,"[""external_guests"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,9,"Thursday, July 7th",Roundtable discussion,,,10,TechAdvantage,"Coffee, tea, and snacks",Laap,,Paris room,,Prepare the Paris room,"[""event_time"", ""meal_type"", ""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4.1-nano,10,"Friday, August 20th",Internal training session,2:00 PM to 5:00 PM,,12,,,Wibaut,,training room II,,Set up a coffee station nearby,"[""meal_type"", ""external_guests"", ""catering_type"", ""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4.1-nano,11,May 18,Client Workshop,,Lunch,15,KLM client,Simple lunch with sandwiches and salads,,,Grand Cafe,,Reserve a table for the group,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4.1-nano,12,"Tuesday, July 7",Strategy Meeting,09:00 - 15:00,Light breakfast and lunch,18,,Light breakfast and vegetarian lunch,Utrecht,To be confirmed,B201,,,"[""external_guests"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,13,June 14,Coding bootcamp,10:00 to 17:00,Snacks and drinks,25,A few from our partner company,Snacks and drinks,Amsterdam,,Training Room A,,,"[""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,14,"Friday, April 21",Leadership team lunch,,Lunch,8,,Catered lunch with sandwiches and fruit platter,Paris room,,Paris room,,Coffee and tea available,"[""event_time"", ""external_guests"", ""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4.1-nano,15,March 30,Networking event,14:00 to 18:00,Finger foods and soft drinks,20,Guests from Deloitte,Selection of finger foods and soft drinks,,To be confirmed,Training Room C,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,16,"Monday, June 14",Brainstorming session with strategic partners,,Pastries and coffee,8-10,strategic partners,Pastries and coffee,,,A102,,Cost inquiry for setup,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4.1-nano,17,"Friday, October 23",Farewell gathering,,Lunch,15,,Catered lunch with vegan options,Hilversum,Vegan options for team member,Grand Cafe,,,"[""event_time"", ""external_guests"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,18,"Wednesday, February 10",Full day workshop for tech client,full day,Light lunch with sandwiches and drinks,no more than 18,tech client,Light lunch with sandwiches and drinks,Wibaut office,,training room,,Snacks for the afternoon session,"[""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4.1-nano,19,"Thursday, March 5",Meeting with client Appian,10:00 AM to 2:00 PM,Lunch,12,client Appian,Vegetarian options,Amsterdam,Vegetarian,B212,,,"[""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,20,"Tuesday, July 8",Group Visit from Paris Office,9 AM until 4 PM,Lunch,16,Group from Paris office,Simple lunch with coffee and snacks,,To be confirmed,Laap,,Coffee and snacks throughout the day,"[""office_location"", ""av_equipment""]",
+v3,gpt-4.1-nano,21,"Thursday, July 15",Executive roundtable,8:00 AM,Light breakfast,12,,"Pastries, coffee, and tea",Amsterdam,Gluten-free options,Paris room,,,"[""external_guests"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,22,"Wednesday, August 10",Strategy workshop with Shell,2 PM to 5 PM,Sandwiches and coffee,15,Shell,Sandwiches and coffee,,,3.02,,,"[""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,23,"Monday, September 5",Knowledge-sharing session,,Lunch,20,a few partners,Catered lunch with sandwiches and salad bar,Hilversum,Vegetarian option available,,,,"[""event_time"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,24,"Friday, June 25",Team-building event,,Barbecue lunch,25,Colleagues from our Paris office,Barbecue,,,Rooftop terrace,Projector,Use rooftop terrace if weather permits,"[""event_time"", ""office_location"", ""dietary_requirements""]",
+v3,gpt-4.1-nano,25,"Friday, October 22",Kick-off meeting for a new project,10:00 AM to 3:00 PM,"Snacks, coffee, and tea",To be confirmed,,"Snacks, coffee, and tea",Berlin,,Berlin room,,,"[""external_guests"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,26,"Thursday, April 13",Strategy session with partner ING,10:00 AM to 4:00 PM,Lunch,15,Partner ING,Lunch with vegetarian options,,Vegetarian options included,Amsterdam room,Projector,,"[""office_location"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,27,"Monday, March 8",Get-together for new hires,2:00 to 5:00 PM,Snacks,8,,Coffee and snacks,,,Grand Café,,,"[""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,28,"Friday, November 15",Brainstorming session with Deloitte,9:00 AM,Light breakfast,12,Deloitte,Light breakfast,Paris room,,Paris room,,,"[""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,29,"Wednesday, August 23",Training day,,Lunch,18,Internal staff,Tentative lunch,,,B203,,To be confirmed,"[""event_time"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4.1-nano,30,Next Tuesday,Partner Visit,1:00 PM to 5:00 PM,Coffee and tea,20,Partner Salesforce,Coffee and tea service,,To be confirmed,A101,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,31,March 15th,Strategy catch-up,10:00 AM to 12:00 PM,Light snacks and coffee,8,,Light snacks and coffee,,,Room B211,,Check room availability,"[""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4.1-nano,32,February 5th,Partner Visit,,Lunch,14,3 external guests,Simple lunch with assorted sandwiches and vegetarian option,Rotterdam,To be confirmed,Suitable meeting room,Water and tea available throughout the meeting,,"[""event_time"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,33,April 22nd,Team Meeting,8:30 AM to noon,Breakfast,10,,Pastries and fruit,Grand Café,,Room 3.02,,,"[""external_guests"", ""dietary_requirements"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,34,July 9th,Project review session,2 PM to 5 PM,Snacks,15,,,Amsterdam,To be confirmed,A302,Projector,Coffee and snacks,"[""external_guests"", ""catering_type""]",
+v3,gpt-4.1-nano,35,August 3rd,Workshop,9:00 AM to noon,Sandwiches and drinks,6,2 guests,Sandwiches and drinks,Hilversum,To be confirmed,Available space in Hilversum office,,,"[""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,36,"Wednesday, July 22",Internal workshop for DevOps team,10:00 AM to 3:00 PM,Lunch,18,Internal DevOps team,Salads and sandwiches,Hilversum,Vegan,Training room,Projector,,"[""extra_arrangements""]",
+v3,gpt-4.1-nano,37,"Friday, August 7th",Partner Meeting with AWS,11:00 AM to 3:00 PM,Lunch,12,AWS partner,Wraps and fruit platters,Wibaut,To be confirmed,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,38,"Monday, September 14",Team-building session,2:00 PM,,25,,Snacks and drinks,,,Bangalore room,,Session in the afternoon,"[""meal_type"", ""external_guests"", ""office_location"", ""dietary_requirements"", ""av_equipment""]",
+v3,gpt-4.1-nano,39,"Thursday, October 15th",Client Meeting with ING,1:00 PM until 5:00 PM,Catered lunch with vegetarian options,15,Client from ING,Vegetarian lunch,Amsterdam,Vegetarian options,Paris room,,Setup with chairs in a semicircle,"[""av_equipment""]",
+v3,gpt-4.1-nano,40,"Tuesday, November 3",Internal product demo,full day,Sandwiches,20,,Light lunch,Wibaut,,Training Room A,Projector,,"[""external_guests"", ""dietary_requirements"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,41,October 25,Strategy session with key partners,14:00 to 18:00,Light refreshments,18,4 from external companies,Sandwiches and drinks,Laap office,To be confirmed,Larger training rooms,,,"[""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,42,"Friday, November 7",Meeting with client,10:00 AM to 1:00 PM,Lunch,15,client,"Sandwiches and salads, vegetarian-friendly option",Hilversum,Vegetarian-friendly,,,,"[""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,43,"Monday, October 20",Internal workshop on Agile practices,9:00 AM to 3:00 PM,Snacks,25,a couple of guests,Coffee and tea setup with snacks,Wibaut office,Gluten-free (to be confirmed),,,None,"[""room_location"", ""av_equipment""]",
+v3,gpt-4.1-nano,44,"Thursday, October 12",Meeting,8:30 to 11:30,Breakfast,12,partners from Appian,"Catered breakfast with pastries, fruits, and juices",Amsterdam,To be confirmed,Boardroom,,,"[""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,45,"Friday, December 1",Team-building event,16:00 to 18:30,Dinner,30,,Buffet-style dinner,Grand Café,,,AV equipment for presentations,Space for about 30 people,"[""external_guests"", ""dietary_requirements"", ""room_location""]",
+v3,gpt-4.1-nano,46,March 14th,Small gathering with DevOps partners,,Lunch,18,DevOps partners,Sandwiches or small buffet,,To be confirmed,Paris room,,,"[""event_time"", ""office_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,47,January 22nd,Colleague Visit,8:30 AM,Breakfast,15,Colleagues from Berlin office,"Pastries, fruits, coffee, and juice",,,Grand Café,Projector,Feasibility confirmation,"[""office_location"", ""dietary_requirements""]",
+v3,gpt-4.1-nano,48,October 10th,Client Workshop,,Lunch,25,client,Simple lunch with sandwiches and salads,Hilversum,To be confirmed,training room,,,"[""event_time"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,49,November 3rd,Internal team-building session,13:00 into the evening,Light dinner,30,,Light dinner,Utrecht,Vegetarian preferences,,,,"[""external_guests"", ""room_location"", ""av_equipment"", ""extra_arrangements""]",
+v3,gpt-4.1-nano,50,February 5th,Meeting with new partner TechSavvy,10:00 AM,Snacks,10,TechSavvy,"Coffee, tea, and snacks",,To be confirmed,Boardroom,,,"[""office_location"", ""av_equipment"", ""extra_arrangements""]",
